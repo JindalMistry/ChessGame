@@ -1,0 +1,125 @@
+:root {
+  --width: calc(100vw);
+}
+.hero-wrapper {
+  width: 100%;
+  height: 100svh;
+  padding: 1.5% 2.5% 1.5% 2.5%;
+  background-color: var(--bg);
+  display: flex;
+}
+.hero {
+  height: 100%;
+  width: calc(100% - 12vh);
+  border: 1px solid red;
+  margin: auto;
+  margin-left: 11vh;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.hero-header {
+  border: 1px solid black;
+  width: 90%;
+}
+.hero-main {
+  border: 1px solid black;
+  width: 90%;
+}
+.hero-footer {
+  border: 1px solid black;
+  width: 90%;
+}
+
+.hh {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8em 0;
+  border: 1px solid blue;
+}
+.hh-left {
+  font-size: 2em;
+  font-weight: 800;
+}
+.hh-right {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.hh-theme {
+  height: 3.5em;
+  width: 3.5em;
+  border: 1px solid black;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 3px solid var(--sbg);
+  border-right: 3px solid var(--sbg);
+}
+.hh-theme img {
+  height: 60%;
+  width: 60%;
+}
+.hh-setting {
+  height: 3.5em;
+  width: 250px;
+  margin-left: 0.5em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 30px;
+  background-color: var(--sbg);
+  color: white;
+}
+.hh-setting-left {
+  display: flex;
+  width: 75%;
+  align-items: center;
+}
+.hh-profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.5em;
+  width: 2.5em;
+  background-color: var(--bg);
+  color: black;
+  border-radius: 50%;
+  margin: 0 4%;
+}
+.hh-setting-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.5em;
+  width: 2.5em;
+  border-radius: 50%;
+  margin: 0 4%;
+}
+.hh-setting-btn img {
+  height: 80%;
+  width: 80%;
+}
+.hh-profile span {
+  font-size: 2em;
+}
+.hh-details {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+}
+.hh-details p {
+  font-weight: 600;
+  font-size: 16px;
+}
+.hh-details span {
+  font-size: 10px;
+  font-weight: normal;
+}
