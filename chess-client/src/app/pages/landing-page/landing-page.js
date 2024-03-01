@@ -3,6 +3,8 @@ import "./landing.css";
 import Sidebar from "../../component/sidebar/sidebar";
 import SettingsIcon from '../../../asset/setting-icon.svg';
 import DarkThemeIcon from '../../../asset/dark-theme-icon.svg';
+import {createPortal} from 'react-dom';
+import Modal from "../../component/model/modal";
 
 export default function Hero() {
   return (
@@ -73,6 +75,12 @@ export default function Hero() {
           </div>
         </div>
       </div>
+      {
+        createPortal(
+          <Modal label={"Play against AI"}/>,
+          document.body
+        )
+      }
     </div>
   );
 }
