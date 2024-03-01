@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./landing.css";
 import Sidebar from "../../component/sidebar/sidebar";
 import SettingsIcon from '../../../asset/setting-icon.svg';
@@ -7,6 +7,7 @@ import { createPortal } from 'react-dom';
 import FriendPopup from "../../popup/friend-popup/friend-popup";
 
 export default function Hero() {
+  const [showFriendPopup, setFriendPopup] = useState(false)
   return (
     <div className="hero-wrapper">
       <Sidebar />
@@ -40,7 +41,9 @@ export default function Hero() {
           </div>
           <div className="hm-right-btns">
             <button>Play online</button>
-            <button>Challenge AI</button>
+            <button onClick={() => {
+              setFriendPopup(true)
+            }}>Challenge AI</button>
           </div>
         </div>
         <div className="hero-footer">
@@ -76,8 +79,9 @@ export default function Hero() {
         </div>
       </div>
       {
+        showFriendPopup &&
         createPortal(
-          <FriendPopup show={true} onClose={() => { }} />,
+          <FriendPopup show={true} onClose={() => { setFriendPopup(false) }} />,
           document.body
         )
       }
