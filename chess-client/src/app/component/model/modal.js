@@ -5,24 +5,25 @@ import './modal.css'
 export default function Modal({
     label,
     onClose,
-    children
+    children,
+    show
 }) {
-  return (
-    <div className='modal-wrapper'>
-        <div className='modal'>
-        <header>
-            <p>{label}</p>
-            <div className='close-modal'>
-                <img src={CloseIcon} alt='close-icon'/>                
+    return (
+        show && <div className='modal-wrapper'>
+            <div className='modal'>
+                <header>
+                    <p>{label}</p>
+                    <div className='close-modal' onClick={onClose}>
+                        <img src={CloseIcon} alt='close-icon' />
+                    </div>
+                </header>
+                {children}
             </div>
-        </header>
-        {children}
         </div>
-    </div>
-  )
+    )
 }
 
 Modal.defaultProps = {
-    label : '',
-    onClose : () => {},
+    label: '',
+    onClose: () => { },
 }

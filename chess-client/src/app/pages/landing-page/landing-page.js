@@ -3,8 +3,8 @@ import "./landing.css";
 import Sidebar from "../../component/sidebar/sidebar";
 import SettingsIcon from '../../../asset/setting-icon.svg';
 import DarkThemeIcon from '../../../asset/dark-theme-icon.svg';
-import {createPortal} from 'react-dom';
-import Modal from "../../component/model/modal";
+import { createPortal } from 'react-dom';
+import FriendPopup from "../../popup/friend-popup/friend-popup";
 
 export default function Hero() {
   return (
@@ -15,7 +15,7 @@ export default function Hero() {
           <span className="hh-left">KingsBane</span>
           <div className="hh-right">
             <div className="hh-theme">
-              <img src={DarkThemeIcon} alt="select-theme"/>
+              <img src={DarkThemeIcon} alt="select-theme" />
             </div>
             <div className="hh-setting">
               <div className="hh-setting-left">
@@ -77,7 +77,7 @@ export default function Hero() {
       </div>
       {
         createPortal(
-          <Modal label={"Play against AI"}/>,
+          <FriendPopup show={true} onClose={() => { }} />,
           document.body
         )
       }
