@@ -12,7 +12,7 @@ export default function Input({
     <input
       type={type}
       className={`input ${className}`}
-      onChange={onChange}      
+      onChange={onChange}
       placeholder={placeholder}
       value={value}
     />
@@ -22,7 +22,7 @@ export default function Input({
 Input.defaultProps = {
   type: "text",
   className: "",
-  onChange: () => {},
+  onChange: () => { },
   value: "",
   placeholder: "",
 };

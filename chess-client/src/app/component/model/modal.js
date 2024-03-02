@@ -12,7 +12,7 @@ export default function Modal({
         show && <div className='modal-wrapper'>
             <div className='modal'>
                 <header>
-                    <p>{label}</p>
+                    <p className='label'>{label}</p>
                     <div className='close-modal' onClick={onClose}>
                         <img src={CloseIcon} alt='close-icon' />
                     </div>

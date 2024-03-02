@@ -9,16 +9,29 @@
     top: 0;
     left: 0;
 }
+
 .modal {
-    height: 550px;
-    width: 750px;
+    height: 75vh;
+    width: 50vw;
     background-color: var(--bg);
     border-radius: 20px;
     padding: 1.5%;
 }
+
 .modal header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-top: 0.2em;
+    padding-top: 0.1em;
+}
+
+.label {
+    font-size: x-large;
+    padding-left: 1em;
+    font-weight: 900;
+}
+
+.modal .close-modal {
+    display: flex;
+    width: 6.5%;
 }
