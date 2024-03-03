@@ -18,15 +18,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-}
-.hero-header {
-  border: 1px solid black;
-  width: 90%;
-}
-.hero-main {
-  border: 1px solid black;
-  width: 90%;
+  justify-content: flex-start;
 }
 .hero-footer {
   border: 1px solid black;
@@ -39,7 +31,6 @@
   align-items: center;
   justify-content: space-between;
   padding: 0.8em 0;
-  border: 1px solid blue;
 }
 .hh-left {
   font-size: 2em;
@@ -122,4 +113,56 @@
 .hh-details span {
   font-size: 10px;
   font-weight: normal;
+}
+
+/* Header end */
+
+.hm {
+  min-height: 200px;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 0.8em 0;
+}
+.hm-para {
+  max-width: 600;
+  font-size: 20px;
+  line-height: 2;
+}
+.chessboard-title{
+  font-size: 40px;
+  font-weight: bold;
+  color: var(--pr);
+  text-shadow: 0.1rem 0.1rem 0.2rem var(--sec);
+  line-height: 0;
+}
+.hm-right-btns {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-evenly;
+}
+.hf {
+  width: 100%;
+  height: 60%;
+  display: flex;
+}
+.footer-left{
+  width: 59%;
+  margin-right: auto;
+  background-color: red;
+  height: 100%;
+  border: none;
+  border-radius: 20px;
+}
+.footer-right {
+  width: 39%;
+  margin-left: auto;
+  background-color: blue;
+  height: 100%;
+  border: none;
+  border-radius: 20px;
 }

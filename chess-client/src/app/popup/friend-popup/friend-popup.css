@@ -6,7 +6,6 @@
     align-items: center;
     text-align: center;
     border-radius: 20px;
-    border: 1px solid grey;
 }
 
 .modal-header {
@@ -14,28 +13,25 @@
     justify-content: space-between;
     width: 100%;
     padding: 10px 0px;
-    border: 1px solid red;
 }
+.modal-button {width: 45%;}
+.modal-input {width: 55%;}
 
 .modal-button,
 .modal-input {
-    width: 50%;
-    border-radius: 50px;
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
 .modal-lists {
-    border: 1px solid blue;
     width: 100%;
     border-radius: 20px;
-    padding-top: 10px;
     margin-top: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     overflow-y: auto;
+    list-style: none;
 }
 
 .list {
@@ -47,7 +43,9 @@
     background-color: var(--sbg);
     /* padding: 10px 0px;
     margin-top: 1rem; */
-    border-radius: 50px;
+    border-radius: 45px;
+    margin-top: 10px;
+    padding: 10px 0px;
 }
 
 .list p {

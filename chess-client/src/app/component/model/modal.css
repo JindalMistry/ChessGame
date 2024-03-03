@@ -33,5 +33,6 @@
 
 .modal .close-modal {
     display: flex;
-    width: 6.5%;
+    width: 2.5em;
+    cursor: pointer;
 }

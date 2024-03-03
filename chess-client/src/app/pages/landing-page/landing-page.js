@@ -5,6 +5,7 @@ import SettingsIcon from '../../../asset/setting-icon.svg';
 import DarkThemeIcon from '../../../asset/dark-theme-icon.svg';
 import { createPortal } from 'react-dom';
 import FriendPopup from "../../popup/friend-popup/friend-popup";
+import Button from "../../component/button/button";
 
 export default function Hero() {
   const [showFriendPopup, setFriendPopup] = useState(false)
@@ -34,19 +35,33 @@ export default function Hero() {
             </div>
           </div>
         </div>
-        <div className="hero-main">
+        <div className="hm">
           <div className="hm-para">
-            Experience the Thrill of Strategic warfare with KingsBane, where each move holds the power to shape the
-            destiny of empires on the Chessboard
+            Experience the Thrill of Strategic warfare with <br/> KingsBane, where each move holds the power to shape <br/> the
+            destiny of empires on the <span className="chessboard-title">Chessboard</span>
           </div>
           <div className="hm-right-btns">
-            <button>Play online</button>
-            <button onClick={() => {
-              setFriendPopup(true)
-            }}>Challenge AI</button>
+            <Button
+              label={"Play online"}
+              className={"py-1 w-70p larger bold"}
+              background={"primary"}
+              loading={false}
+              loadingType={"pulse"}
+              onClick={() => {}}  
+              variant={"shadowed"}         
+            />
+            <Button
+              label={"Challenge AI"}
+              className={"py-1 w-70p larger bold"}
+              background={"secondary"}
+              loading={false}
+              loadingType={"falling"}
+              onClick={() => {setFriendPopup(true);}}    
+              variant={"shadowed"}       
+            />
           </div>
         </div>
-        <div className="hero-footer">
+        <div className="hf">
           <div className="footer-left"></div>
           <div className="footer-right">
             <p>Past results</p>
