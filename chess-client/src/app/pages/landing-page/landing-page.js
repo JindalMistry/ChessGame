@@ -26,7 +26,7 @@ export default function Hero() {
                 </div>
                 <div className="hh-details">
                   <p>Jindal Mistry</p>
-                  <span>Legend</span>
+                  <span>Legends</span>
                 </div>
               </div>
               <div className="hh-setting-btn">
