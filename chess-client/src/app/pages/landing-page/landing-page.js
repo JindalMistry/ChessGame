@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import "./landing.css";
 import Sidebar from "../../component/sidebar/sidebar";
-import SettingsIcon from '../../../asset/setting-icon.svg';
-import DarkThemeIcon from '../../../asset/dark-theme-icon.svg';
-import { createPortal } from 'react-dom';
+import SettingsIcon from "../../../asset/setting-icon.svg";
+import DarkThemeIcon from "../../../asset/dark-theme-icon.svg";
+import { createPortal } from "react-dom";
 import FriendPopup from "../../popup/friend-popup/friend-popup";
 import Button from "../../component/button/button";
+import AiPopup from "../../popup/ai-popup/ai-popup";
 
 export default function Hero() {
-  const [showFriendPopup, setFriendPopup] = useState(false)
+  const [showFriendPopup, setFriendPopup] = useState(false);
+  const [showAiPopup, setAiPopup] = useState(false);
   return (
     <div className="hero-wrapper">
       <Sidebar />
@@ -37,8 +39,9 @@ export default function Hero() {
         </div>
         <div className="hm">
           <div className="hm-para">
-            Experience the Thrill of Strategic warfare with <br/> KingsBane, where each move holds the power to shape <br/> the
-            destiny of empires on the <span className="chessboard-title">Chessboard</span>
+            Experience the Thrill of Strategic warfare with <br /> KingsBane,
+            where each move holds the power to shape <br /> the destiny of
+            empires on the <span className="chessboard-title">Chessboard</span>
           </div>
           <div className="hm-right-btns">
             <Button
@@ -47,8 +50,10 @@ export default function Hero() {
               background={"primary"}
               loading={false}
               loadingType={"pulse"}
-              onClick={() => {}}  
-              variant={"shadowed"}         
+              variant={"shadowed"}
+              onClick={() => {
+                setFriendPopup(true);
+              }}
             />
             <Button
               label={"Challenge AI"}
@@ -56,8 +61,10 @@ export default function Hero() {
               background={"secondary"}
               loading={false}
               loadingType={"falling"}
-              onClick={() => {setFriendPopup(true);}}    
-              variant={"shadowed"}       
+              onClick={() => {
+                setAiPopup(true);
+              }}
+              variant={"shadowed"}
             />
           </div>
         </div>
@@ -93,13 +100,26 @@ export default function Hero() {
           </div>
         </div>
       </div>
-      {
-        showFriendPopup &&
+      {showFriendPopup &&
         createPortal(
-          <FriendPopup show={true} onClose={() => { setFriendPopup(false) }} />,
+          <FriendPopup
+            show={true}
+            onClose={() => {
+              setFriendPopup(false);
+            }}
+          />,
           document.body
-        )
-      }
+        )}
+      {showAiPopup &&
+        createPortal(
+          <AiPopup
+            show={true}
+            onClose={() => {
+              setAiPopup(false);
+            }}
+          />,
+          document.body
+        )}
     </div>
   );
 }

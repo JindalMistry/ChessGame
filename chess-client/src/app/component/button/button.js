@@ -8,7 +8,7 @@ export default function Button({
   loading,
   loadingType, //"pulse" | "falling" | "floating" | "flashing"
   background, //"primary" | "secondary" | "common"
-  variant //"shadowd" | "clean",
+  variant, //"shadowd" | "clean",
 }) {
   const [bg, setBg] = useState("");
   useEffect(() => {
@@ -18,7 +18,12 @@ export default function Button({
     else setBg(background);
   }, [background]);
   return (
-    <button onClick={onClick} className={`button ${className} ${variant}`} disabled={loading} style={{ backgroundColor: bg }}>
+    <button
+      onClick={onClick}
+      className={`button ${className} ${variant}`}
+      disabled={loading}
+      style={{ backgroundColor: bg }}
+    >
       {loading ? <div className={loadingType}></div> : null}
       <p>{loading ? <>&nbsp;</> : label}</p>
     </button>
@@ -31,5 +36,5 @@ Button.defaultProps = {
   className: "",
   loading: false,
   loadingType: "pulse",
-  variant : "clean"
+  variant: "clean",
 };

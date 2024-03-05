@@ -1,15 +1,34 @@
-import swaggerJSDoc from 'swagger-jsdoc';
+import swaggerAutogen from "swagger-autogen";
 
-const options = {
-  definition: {
-    openapi: '3.0.0',
-    info: {
-      title: 'Node.js Swagger API',
-      version: '1.0.0',
-      description: 'API documentation for Node.js application',
-    },
+const doc = {
+  info: {
+    version: "", // by default: '1.0.0'
+    title: "API Documentation", // by default: 'REST API'
+    description: "", // by default: ''
   },
-  apis: ['./src/controllers/*'],
+  host: "", // by default: 'localhost:3000'
+  basePath: "", // by default: '/'
+  schemes: [], // by default: ['http']
+  consumes: [], // by default: ['application/json']
+  produces: [], // by default: ['application/json']
+  tags: [
+    // by default: empty Array
+    {
+      name: "", // Tag name
+      description: "", // Tag description
+    },
+    // { ... }
+  ],
+  securityDefinitions: {}, // by default: empty object
+  definitions: {}, // by default: empty object
 };
 
-export default swaggerJSDoc(options);
+const outputFile = "./swagger-output.json";
+const routes = ["./controllers/userController.js"];
+
+/* NOTE: If you are using the express Router, you must pass in the 'routes' only the 
+  root file where the route starts, such as index.js, app.js, routes.js, etc ... */
+
+swaggerAutogen()(outputFile, routes, doc).then(async () => {
+  await import("./app.js"); // Your project's root file
+});

@@ -1,11 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
 
 :root {
-  --bg : white;
-  --sbg : #424040;
-  --pr : #2ECC71;
-  --reg : white;
-  --sec : #95BFFF;
+  --bg: white;
+  --sbg: #424040;
+  --pr: #2ecc71;
+  --reg: white;
+  --sec: #95bfff;
+  --pbt: #f0f3ff;
 }
 * {
   margin: 0;
@@ -14,19 +15,38 @@
   font-family: "DM Sans", sans-serif;
   font-optical-sizing: auto;
 }
-
-.large { font-size: large;}
-.larger { font-size: larger;}
-.small { font-size: small;}
-.medium { font-size: medium;}
+.smaller {
+  font-size: smaller;
+}
+.large {
+  font-size: large;
+}
+.larger {
+  font-size: larger;
+}
+.small {
+  font-size: small;
+}
+.medium {
+  font-size: medium;
+}
 .w-10p {
   width: 10% !important;
+}
+.w-15p {
+  width: 15% !important;
 }
 .w-20p {
   width: 20% !important;
 }
+.w-25p {
+  width: 25% !important;
+}
 .w-30p {
   width: 30% !important;
+}
+.w-35p {
+  width: 35% !important;
 }
 .w-40p {
   width: 40% !important;
@@ -34,7 +54,7 @@
 .w-50p {
   width: 50% !important;
 }
-.w-60p{
+.w-60p {
   width: 60% !important;
 }
 .w-70p {
@@ -46,18 +66,46 @@
 .w-90p {
   width: 90% !important;
 }
-.w-1 { width : 1em;}
-.w-2 { width : 2em;}
-.w-3 { width : 3em;}
-.w-4 { width : 4em;}
-.w-5 { width : 5em;}
-.w-6 { width : 6em;}
-.w-7 {width: 7em;}
-.w-8 { width: 8em;}
-.w-9 { width: 9em;}
-.w-10 { width: 10em;}
-.w-15 { width: 15em;}
-.w-16 { width: 16em;}
+.w-1 {
+  width: 1em;
+}
+.w-2 {
+  width: 2em;
+}
+.w-3 {
+  width: 3em;
+}
+.w-4 {
+  width: 4em;
+}
+.w-5 {
+  width: 5em;
+}
+.w-6 {
+  width: 6em;
+}
+.w-7 {
+  width: 7em;
+}
+.w-8 {
+  width: 8em;
+}
+.w-9 {
+  width: 9em;
+}
+.w-10 {
+  width: 10em;
+}
+.w-15 {
+  width: 15em;
+}
+.w-16 {
+  width: 16em;
+}
+.py-03 {
+  padding-top: 0.3rem !important;
+  padding-bottom: 0.3rem !important;
+}
 .px-05 {
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
@@ -136,7 +184,20 @@
   padding-bottom: 8rem !important;
 }
 
-.bold { font-weight: bold;}
-.italic { font-style: italic;}
-.shadowed { border:none; border-bottom: 3px solid black; border-right: 3px solid black;}
-.clean {border: none;}
+.bold {
+  font-weight: bold;
+}
+.italic {
+  font-style: italic;
+}
+.shadowed {
+  border: none;
+  border-bottom: 3px solid black;
+  border-right: 3px solid black;
+}
+.clean {
+  border: none;
+}
+.primaryborder {
+  border: 1px solid var(--pr);
+}

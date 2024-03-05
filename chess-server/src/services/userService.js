@@ -1,4 +1,4 @@
-import User from '../models/userModel.js';
+import User from "../models/userModel.js";
 
 async function getAllUsers(req, res) {
   try {
@@ -12,7 +12,7 @@ async function getAllUsers(req, res) {
 async function createUser(req, res) {
   const user = new User({
     name: req.body.name,
-    email: req.body.email
+    email: req.body.email,
   });
 
   try {
@@ -25,5 +25,6 @@ async function createUser(req, res) {
 
 export default {
   getAllUsers,
-  createUser
+  createUser,
+  getTeset,
 };

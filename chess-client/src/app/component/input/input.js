@@ -1,5 +1,5 @@
 import React from "react";
-import './input.css'
+import "./input.css";
 
 export default function Input({
   type,
@@ -22,7 +22,7 @@ export default function Input({
 Input.defaultProps = {
   type: "text",
   className: "",
-  onChange: () => { },
+  onChange: () => {},
   value: "",
   placeholder: "",
 };

@@ -1,71 +1,74 @@
 .modal-main {
-    width: 100%;
-    height: 90%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    border-radius: 20px;
+  width: 100%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border-radius: 20px;
 }
 
 .modal-header {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    padding: 10px 0px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 0px;
 }
-.modal-button {width: 45%;}
-.modal-input {width: 55%;}
+.modal-button {
+  width: 45%;
+}
+.modal-input {
+  width: 55%;
+}
 
 .modal-button,
 .modal-input {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .modal-lists {
-    width: 100%;
-    border-radius: 20px;
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-    list-style: none;
+  width: 100%;
+  border-radius: 20px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  list-style: none;
 }
 
 .list {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    text-align: center;
-    color: white;
-    background-color: var(--sbg);
-    /* padding: 10px 0px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  color: white;
+  background-color: var(--sbg);
+  /* padding: 10px 0px;
     margin-top: 1rem; */
-    border-radius: 45px;
-    margin-top: 10px;
-    padding: 10px 0px;
+  border-radius: 45px;
+  margin-top: 10px;
+  padding: 10px 0px;
 }
 
 .list p {
-    font-size: medium;
-    font-weight: 400;
+  font-size: medium;
+  font-weight: 400;
 }
 
 .list .image {
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
-    background-color: white;
-    border: 3px solid #2ECC71;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: white;
+  border: 3px solid #2ecc71;
 }
 
 /* Responsive Design */
 @media screen and (max-width: 768px) {
-
-    .modal-button,
-    .modal-input {
-        width: 80%;
-    }
+  .modal-button,
+  .modal-input {
+    width: 80%;
+  }
 }
