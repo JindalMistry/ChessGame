@@ -1,13 +1,13 @@
 :root {
-  --icon: calc(7vh);
-  --width : calc(9vh);
-  --iconhover : calc(5vh);
+  --icon: calc(4vh);
+  --width : calc(5vh);
+  --iconhover : calc(3vh);
   --sidebar : 350px;
   --sidebarhover : 320px;
 }
 .sidebar-wrapper {
   height: calc(95vh);
-  width: 4%;
+  width: 3%;
   min-width: var(--width);
   border-radius: 80px;
   background-color: var(--sbg);
@@ -20,7 +20,7 @@
 }
 
 .sidebar-header {
-  padding: 1em 0 2em 0;
+  padding: 1vh 0 3vh 0;
   width: 100%;
   display: flex;
   align-items: center;
@@ -49,6 +49,7 @@
   width: var(--icon);
   border-radius: 50%;
   background-color: var(--bg);
+  cursor: pointer;
 }
 .sidebar-item {
   width: var(--icon);
@@ -57,9 +58,10 @@
   flex-direction: row;
   align-items: center;
   overflow: hidden;
-  margin-bottom: 1em;
+  margin-bottom: 1.5vh;
   transition: all 0.5s ease;
   border-radius: calc(var(--icon) / 2);
+  cursor: pointer;
 }
 .sidebar-item span {
   display: none;
@@ -85,11 +87,11 @@
   background-color: var(--pr);
   align-items: center;
   justify-content: flex-start;
-  margin-bottom: 1em;
+  margin-bottom: 1.5vh;
 }
 .sidebar-wrapper:hover span {
   display: block;
-  margin-left: 1em;
+  margin-left: 1.5vh;
   width: auto;
 }
 .sidebar-wrapper:hover .sidebar-item-logo {
@@ -97,21 +99,13 @@
   width: var(--iconhover);
   border-radius: 50%;
   background-color: var(--bg);
-  margin-left: 1em;
+  margin-left: 1.5vh;
 }
 
 .sidebar-wrapper:hover .sidebar-header {
     width: var(--sidebarhover);
     margin: auto;
     justify-content: flex-start;
-}
-
-img {
-  height: 100%;
-  width: 100%;
-  border-radius: 50%;
-  background-size: cover;
-  background-repeat: no-repeat;
 }
 
 *::-webkit-scrollbar {

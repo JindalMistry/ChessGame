@@ -69,7 +69,9 @@ export default function Hero() {
           </div>
         </div>
         <div className="hf">
-          <div className="footer-left"></div>
+          <div className="footer-left">
+            <img src={"https://www.w3schools.com/css/img_5terre.jpg"} alt="back"/>
+          </div>
           <div className="footer-right">
             <p>Past results</p>
             <div className="hf-item">
