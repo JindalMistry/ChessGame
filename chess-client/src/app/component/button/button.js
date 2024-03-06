@@ -12,11 +12,11 @@ export default function Button({
 }) {
   const bg =
     background === "primary"
-      ? "rgba(120,120,120,0.5)"
+      ? "#2ecc71"
       : background === "secondary"
-      ? "rgba(120,120,120,0.5)"
+      ? "#95bfff"
       : background === "common"
-      ? "rgba(120,120,120,0.5)"
+      ? "#f0f3ff"
       : background;
   return (
     <button
