@@ -28,7 +28,6 @@
   z-index: 1;
   pointer-events: none;
 }
-
 #nav-toggle:checked ~ #nav-header #nav-title {
   opacity: 0;
   pointer-events: none;
@@ -119,7 +118,15 @@ label[for=nav-toggle] {
 }
 
 .fas {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: black;
+}
+.fas img { 
+  height: 50px;
+  width: 50px;
 }
 #nav-header {
   position: relative;

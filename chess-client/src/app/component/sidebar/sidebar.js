@@ -1,5 +1,6 @@
 import {createPortal} from 'react-dom'
 import React, { useEffect, useRef, useState } from "react";
+import VsFriendSvg from "../../../asset/vs-friend.svg";
 import "./sidebar.css";
 
 export default function Sidebar({toggle}) {
@@ -44,7 +45,7 @@ export default function Sidebar({toggle}) {
           {sidebarItem.map((item, index) => {
             return (
               <div class="nav-button">
-                <i class="fas fa-camera"></i>
+                <i class="fas"><img src={VsFriendSvg} alt='vsFriend'/></i>
                 <span>{item}</span>
               </div>
             );
