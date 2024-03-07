@@ -1,0 +1,118 @@
+API DOCUMENTATION
+
+1. /register - POST
+    - input 
+        {
+            "usename" : "string",
+            "password" : "string",
+            "email" : "string"
+        }
+    - verify email structure
+    - username must be unique
+    - verify password length (must be greater than 8)
+    - add user in the table
+
+2. /login - POST
+    - input
+        {
+            "username" : "string",
+            "password" : "string"
+        }
+    - verify if user exists?
+    - match the password
+    - change user status (ONLINE)
+    - create JWT Token
+    - return response
+
+3. /reset-password (VERIFY) - POST
+    - input 
+        {
+            "email" : "string"
+        }
+    - email the temporary password to user's email
+    - change the password in the database if the email was send successfully.
+
+4. /change-password - (VERIFY) - POST
+    - input
+        {
+            "username" : "string",
+            "password" : "string"
+        }
+    - verify if the password is different than the existing password
+    - update the password in the database
+
+5. /logout/{userId} - (VERIFY) - GET
+    - input 
+        - path variable
+            - "userId" : "string"
+    - change the status of user (OFFLINE)
+
+6. /get-landing-page-info/{useId} (VERIFY) - GET
+    - input
+        -path variable
+            - "userId" : "int"
+    - RETURN 
+        - profile image
+        - username's game display name
+        - rating (to determine league)
+
+7. /get-past-results/{userId} (VERIFY) - GET
+    - input
+        -path variable
+            - "userId" : "int"
+    - RETURN 
+        - opponent's profile image
+        - opponent's game display name
+        - opponent's rating (to determine league)
+        - game result
+
+8. /get-friend-list/{userId} (VERIFY) - GET
+    - input
+        -path variable
+            - "userId" : "int"
+    - RETURN
+        - game display name
+        - rating
+        - win, loss ratio
+
+9. /search-player/{searchString} (VERIFY) - GET
+    - input
+        -path variable
+            - "searchString" : "string"
+    - RETURN
+        - game display name
+        - rating
+
+10. /send-friend-request (VERIFY) - POST
+    - input
+        {
+            "senderId" : "int",
+            "recieverId" : "int"
+        }
+    - check if there is any pending request
+    - add row in Friends table with status "PENDING"
+
+11. /accept-request (VERIFY) - POST
+    - input
+        {
+            "senderId" : "int",
+            "recieverId" : "int"
+        }
+    - update status to "ACCEPTED"
+
+12. /update-profile (VERIFY) - POST
+    - input
+      {
+        "Id" : "int"
+        "displayName" : "string",
+        "prefferedTheme" : "int",
+      }
+    - update all the fields provided in the input
+  
+13. /update-profile-image (VERIFY) - POST
+    - input
+      {
+        "Id" : "int"
+        "image" : "blob"
+      }
+    - update image in the table
