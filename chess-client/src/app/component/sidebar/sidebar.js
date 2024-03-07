@@ -1,63 +1,95 @@
-import {createPortal} from 'react-dom'
+import { createPortal } from "react-dom";
 import React, { useEffect, useRef, useState } from "react";
 import VsFriendSvg from "../../../asset/vs-friend.svg";
+import AchievementIcon from "../../../asset/achivement-icon.svg";
+import chessIcon from "../../../asset/chess-piece 1.svg";
+import PlayOnline from "../../../asset/tmep.svg";
+import PlayAI from "../../../asset/vs-ai.svg";
+import History from "../../../asset/history-icon.svg";
+import GetBetter from "../../../asset/get-better.svg";
+import HelpSupport from "../../../asset/help-support.svg";
+import logout from "../../../asset/logout-icon.png";
+import Logo from "../../../asset/main-logo.svg";
 import "./sidebar.css";
 
-export default function Sidebar({toggle}) {
+export default function Sidebar({ toggle }) {
   const sidebarItem = [
-    "Play online",
-    "Play against AI",
-    "VS Friend",
-    "Achievements",
-    "Results",
-    "Get Better",
-    "Help & Support",
-    "Log out"
+    { label: "Play online", img: PlayOnline, h: 60, w: 60 },
+    { label: "Play against AI", img: PlayAI, h: 55, w: 55 },
+    { label: "VS Friend", img: VsFriendSvg, h: 55, w: 55 },
+    { label: "Achievements", img: AchievementIcon, h: 60, w: 60 },
+    { label: "History", img: History, h: 60, w: 60 },
+    { label: "Get Better", img: GetBetter, h: 60, w: 60 },
+    { label: "Help & Support", img: HelpSupport, h: 60, w: 60 },
+    { label: "Log out", img: logout, h: 55, w: 56 },
   ];
   const sidebarRef = useRef();
   const [checked, setChecked] = useState(true);
 
   useEffect(() => {
-    if(toggle === true) {setChecked(!checked)}
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [toggle])
+    if (toggle === true) {
+      setChecked(!checked);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [toggle]);
 
   useEffect(() => {
-    if(sidebarRef && sidebarRef.current) {
-      window.addEventListener('mousedown', (e) => { 
-        if(!sidebarRef.current.contains(e.target)) {
+    if (sidebarRef && sidebarRef.current) {
+      window.addEventListener("mousedown", (e) => {
+        if (!sidebarRef.current.contains(e.target)) {
           setChecked(true);
         }
-      })
+      });
     }
-  },[sidebarRef])
+  }, [sidebarRef]);
   return (
     <>
       <div id="nav-bar" ref={sidebarRef}>
-        <input id="nav-toggle" type="checkbox" checked={checked} onChange={(e) => {setChecked(e.target.checked)}}/>
+        <input
+          id="nav-toggle"
+          type="checkbox"
+          checked={checked}
+          onChange={(e) => {
+            setChecked(e.target.checked);
+          }}
+        />
         <div id="nav-header">
           <span id="nav-title">KingsBane</span>
-          <label for="nav-toggle">
-            <i class="fas fa-camera"></i>
+          <label for="nav-toggle" className="sidebar-cross">
+            {checked ? (
+              <i class="fas">
+                <img src={Logo} alt="vsFriend" className="main-logo" />
+              </i>
+            ) : (
+              <i class="fa-regular fa-circle-xmark"></i>
+            )}
           </label>
         </div>
         <div id="nav-content">
           {sidebarItem.map((item, index) => {
             return (
               <div class="nav-button">
-                <i class="fas"><img src={VsFriendSvg} alt='vsFriend'/></i>
-                <span>{item}</span>
+                <i
+                  className="fas"
+                  onClick={() => {
+                    setChecked(!checked);
+                  }}
+                >
+                  <img
+                    src={item.img}
+                    alt="vsFriend"
+                    height={item.h}
+                    width={item.w}
+                    className="sidebar-listitem"
+                  />
+                </i>
+                <span>{item.label}</span>
               </div>
             );
           })}
         </div>
       </div>
-      {!checked ? 
-        createPortal(
-          <div id="layer"></div>,
-          document.body
-        )
-      : null}
+      {!checked ? createPortal(<div id="layer"></div>, document.body) : null}
     </>
   );
 }

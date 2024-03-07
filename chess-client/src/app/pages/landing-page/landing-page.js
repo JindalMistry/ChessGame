@@ -24,7 +24,10 @@ export default function Hero() {
       <div className="hero">
         <div className="hh">
           <span className="hh-left">
-            <i class="fas fa-camera menu-icon" onClick={onsidebarToggle}></i> KingsBane
+            <span onClick={onsidebarToggle} className="menu-icon">
+              <i className="fa-solid fa-burger"></i>
+            </span>
+            KingsBane
           </span>
           <div className="hh-right">
             <div className="hh-theme">
@@ -48,9 +51,9 @@ export default function Hero() {
         </div>
         <div className="hm">
           <div className="hm-para">
-            Experience the Thrill of Strategic warfare with KingsBane,
-            where each move holds the power to shape the destiny of
-            empires on the <span className="chessboard-title">Chessboard</span>
+            Experience the Thrill of Strategic warfare with KingsBane, where
+            each move holds the power to shape the destiny of empires on the{" "}
+            <span className="chessboard-title">Chessboard</span>
           </div>
           <div className="hm-right-btns">
             <Button

@@ -94,8 +94,8 @@
   margin: 0 4%;
 }
 .hh-setting-btn img {
-  height: 80%;
-  width: 80%;
+  height: 40px;
+  width: 40px;
 }
 .hh-profile span {
   font-size: 2em;
@@ -152,7 +152,7 @@
   height: max-content;
   width: 100%;
   display: flex;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
 }
 .footer-left {
   float: left;
@@ -182,7 +182,6 @@
   margin-bottom: 10px;
 }
 
-
 .hf-profile-icon {
   width: 30px;
   height: 30px;
@@ -193,24 +192,30 @@
 .hf-result {
   margin-left: auto;
 }
+.sidebar-cross {
+  font-size: 2em;
+}
 
 /* Media query for responsive layout */
 @media (max-width: 768px) {
-  .hf {flex-direction:  column;}
+  .hf {
+    flex-direction: column;
+  }
   .footer-left,
   .footer-right {
-    width: 98%; 
+    width: 98%;
     margin: auto;
   }
 }
-
 
 /* Tabs */
 @media screen and (max-width: 800px) {
   .menu-icon {
     display: contents;
     font-size: 1em;
-    margin-right: 8px;
+  }
+  .menu-icon i {
+    margin: 0 8px;
   }
   .hero {
     width: calc(100% - 16px);
@@ -228,26 +233,36 @@
   .hh-setting-left {
     display: none;
   }
-  .hm{ min-width: 350px;}
+  .hm {
+    min-width: 350px;
+  }
 }
 @media screen and (max-width: 550px) {
-  .hm{
+  .hm {
     flex-direction: column;
     align-items: center;
     width: 100%;
     margin: 1em 0em;
   }
-  .hm-para, .hm-right-btns{
+  .hm-para,
+  .hm-right-btns {
     width: 90%;
     margin: auto;
   }
-  .hm-para{font-size: 1em; text-align: left;}
+  .hm-para {
+    font-size: 1em;
+    text-align: left;
+  }
   .hm-right-btns {
     align-items: center;
   }
-  .hm-right-btns button { margin-top: 1.5em;}
+  .hm-right-btns button {
+    margin-top: 1.5em;
+  }
 }
 /* Mobile */
 @media screen and (max-width: 420px) {
-  .hm-para{font-size: 1em;}
+  .hm-para {
+    font-size: 1em;
+  }
 }

@@ -3,8 +3,8 @@
   --navbar-width-min: 80px;
   --bg: white;
   --bg: white;
-  --navbar-min-mobile : 0px;
-  --navbar-width-mobile : 100%;
+  --navbar-min-mobile: 0px;
+  --navbar-width-mobile: 100%;
 }
 
 #nav-bar {
@@ -23,8 +23,8 @@
   left: 0;
   top: 0;
   height: 100vh;
-  width : 100%;
-  background-color: rgba(120, 120, 120, 0.2);
+  width: 100%;
+  background-color: rgba(120, 120, 120, 0.4);
   z-index: 1;
   pointer-events: none;
 }
@@ -33,7 +33,7 @@
   pointer-events: none;
   transition: opacity 0.1s ease-in-out;
 }
-#nav-toggle:checked ~ #nav-header label[for=nav-toggle] {
+#nav-toggle:checked ~ #nav-header label[for="nav-toggle"] {
   left: calc(50% - 8px);
   transform: translate(-50%);
 }
@@ -65,7 +65,8 @@
   left: 50%;
   transform: translate(-50%);
 }
-#nav-toggle:checked ~ #nav-footer #nav-footer-titlebox, #nav-toggle:checked ~ #nav-footer label[for=nav-footer-toggle] {
+#nav-toggle:checked ~ #nav-footer #nav-footer-titlebox,
+#nav-toggle:checked ~ #nav-footer label[for="nav-footer-toggle"] {
   opacity: 0;
   transition: opacity 0.1s ease-in-out;
   pointer-events: none;
@@ -75,18 +76,17 @@
   color: inherit;
   text-decoration: inherit;
 }
-#nav-bar input[type=checkbox] {
+#nav-bar input[type="checkbox"] {
   display: none;
 }
-
-
 
 #nav-title {
   font-size: 1.5rem;
   transition: opacity 1s ease-in-out;
+  font-weight: bolder;
 }
 
-label[for=nav-toggle] {
+label[for="nav-toggle"] {
   position: absolute;
   right: 0;
   width: 3rem;
@@ -102,7 +102,7 @@ label[for=nav-toggle] {
   height: 55px;
   border-radius: 27.5px;
   position: relative;
-  margin: 0 auto 10px auto;
+  margin: 0 auto 20px auto;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -110,13 +110,19 @@ label[for=nav-toggle] {
   direction: ltr;
   cursor: pointer;
   z-index: 1;
-  transition: color 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
   background-color: var(--pr);
+}
+.nav-button:hover {
+  box-shadow: 0 2px 4px rgba(66, 64, 64, 0.1), 0 4px 8px rgba(46, 204, 113, 0.3);
 }
 .nav-button span {
   font-size: 1em;
 }
-
+.nav-button:hover span {
+  font-weight: bold;
+  color: var(--sbg);
+}
 .fas {
   height: 100%;
   display: flex;
@@ -124,9 +130,17 @@ label[for=nav-toggle] {
   justify-content: center;
   color: black;
 }
-.fas img { 
-  height: 50px;
-  width: 50px;
+.nav-button:hover .sidebar-listitem {
+  height: 65px;
+  width: 65px;
+}
+.sidebar-listitem {
+  transition: all 0.3s ease-in-out;
+}
+
+.main-logo {
+  height: 60px;
+  width: 60px;
 }
 #nav-header {
   position: relative;
@@ -143,9 +157,9 @@ label[for=nav-toggle] {
 
 #nav-content {
   margin: -16px 0;
-  padding: 16px 0;
+  padding: 30px 0;
   position: relative;
-  flex : 1;
+  flex: 1;
   width: var(--navbar-width);
   background: var(--sbg);
   box-shadow: 0 0 0 16px var(--sbg);
@@ -154,18 +168,17 @@ label[for=nav-toggle] {
   transition: width 0.2s ease-in-out;
 }
 
-@media screen and (min-width : 800px){
-  #nav-toggle:checked ~ #nav-content{
+@media screen and (min-width: 800px) {
+  #nav-toggle:checked ~ #nav-content {
     width: var(--navbar-width-min);
-    
   }
   #nav-toggle:checked ~ #nav-header {
     width: calc(var(--navbar-width-min) - 16px);
   }
 }
 /* Tabs */
-@media screen and (max-width : 800px){
-  #nav-toggle:checked ~ #nav-content{
+@media screen and (max-width: 800px) {
+  #nav-toggle:checked ~ #nav-content {
     width: 0px;
   }
   #nav-toggle:checked ~ #nav-header {
@@ -173,8 +186,8 @@ label[for=nav-toggle] {
   }
 }
 /* Mobile */
-@media screen and (max-width : 420px){
-  #nav-toggle:checked ~ #nav-content{
+@media screen and (max-width: 420px) {
+  #nav-toggle:checked ~ #nav-content {
     width: 0px;
   }
   #nav-toggle:checked ~ #nav-header {
@@ -183,7 +196,7 @@ label[for=nav-toggle] {
   #nav-header {
     width: calc(100vw - 16px);
   }
-  #nav-content{
+  #nav-content {
     width: 100vw;
   }
 }
