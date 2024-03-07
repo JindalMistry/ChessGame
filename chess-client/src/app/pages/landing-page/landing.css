@@ -1,18 +1,19 @@
 :root {
   --width: calc(100vw);
+  --sidebar: 90px;
 }
 .hero-wrapper {
   width: 100%;
   height: 100svh;
   background-color: var(--bg);
   display: flex;
+  border: 2px solid black;
 }
 .hero {
   height: 100%;
-  width: calc(100%);
-  border: 1px solid grey;
+  width: calc(100% - var(--sidebar));
   margin: auto;
-  margin-left: 8vh;
+  margin-left: var(--sidebar);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,9 +25,12 @@
   width: 100%;
   flex-wrap: wrap;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
-  padding: 1em 0;
+  padding: 0.5em 0;
+}
+.menu-icon {
+  display: none;
 }
 .hh-left {
   font-size: 2em;
@@ -38,8 +42,8 @@
   justify-content: space-between;
 }
 .hh-theme {
-  height: 3.5em;
-  width: 3.5em;
+  height: 3em;
+  width: 3em;
   border: 1px solid black;
   border-radius: 50%;
   display: flex;
@@ -53,7 +57,7 @@
   width: 60%;
 }
 .hh-setting {
-  height: 3.5em;
+  height: 3em;
   width: 250px;
   margin-left: 0.5em;
   display: flex;
@@ -72,8 +76,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 2.5em;
-  width: 2.5em;
+  height: 2em;
+  width: 2em;
   background-color: var(--bg);
   color: black;
   border-radius: 50%;
@@ -83,8 +87,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 2.5em;
-  width: 2.5em;
+  height: 2em;
+  width: 2em;
   border-radius: 50%;
   margin: 0 4%;
 }
@@ -114,16 +118,16 @@
 /* Header end */
 
 .hm {
+  height: auto;
   min-height: 200px;
   width: 100%;
-  flex-wrap: wrap;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
   padding: 0.8em 0;
 }
 .hm-para {
-  max-width: 600px;
+  max-width: 400px;
   font-size: 20px;
   line-height: 2;
 }
@@ -135,11 +139,11 @@
   line-height: 0;
 }
 .hm-right-btns {
-  width: 40%;
+  width: 30%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: end;
+  align-items: flex-start;
   justify-content: space-evenly;
 }
 .hf {
@@ -150,8 +154,6 @@
 .footer-left {
   width: 59%;
   margin-right: auto;
-  /* border-radius: 20px;
-  border: 1px solid black; */
 }
 .footer-left img {
   width: 100%;
@@ -164,4 +166,51 @@
   border: 1px solid black;
   border-radius: 20px;
   height: auto;
+}
+
+/* Tabs */
+@media screen and (max-width: 800px) {
+  .menu-icon {
+    display: contents;
+    font-size: 1em;
+    margin-right: 8px;
+  }
+  .hero {
+    width: calc(100% - 16px);
+    margin-left: 0;
+    margin: auto;
+  }
+  .hh-setting {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 3em;
+    height: 3em;
+  }
+  .hh-setting-left {
+    display: none;
+  }
+  .hm{ min-width: 350px;}
+}
+@media screen and (max-width: 550px) {
+  .hm{
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 1em 0em;
+  }
+  .hm-para, .hm-right-btns{
+    width: 90%;
+    margin: auto;
+  }
+  .hm-para{font-size: 1em; text-align: left;}
+  .hm-right-btns {
+    align-items: center;
+  }
+  .hm-right-btns button { margin-top: 1.5em;}
+}
+/* Mobile */
+@media screen and (max-width: 420px) {
+  .hm-para{font-size: 1em;}
 }

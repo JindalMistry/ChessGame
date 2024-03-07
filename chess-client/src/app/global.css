@@ -201,3 +201,13 @@
 .primaryborder {
   border: 1px solid var(--pr);
 }
+*::-webkit-scrollbar {
+  width: 5px;
+}
+*::-webkit-scrollbar-thumb {
+  border-radius: 99px;
+  background-color: rgba(120, 120, 120, 0.5);
+}
+*::-webkit-scrollbar-button {
+  height: 16px;
+}
