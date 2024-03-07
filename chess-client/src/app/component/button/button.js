@@ -10,13 +10,14 @@ export default function Button({
   background, //"primary" | "secondary" | "common"
   variant, //"shadowd" | "clean",
 }) {
-  const [bg, setBg] = useState("");
-  useEffect(() => {
-    if (background === "primary") setBg("#2ECC71");
-    else if (background === "secondary") setBg("#95BFFF");
-    else if (background === "common") setBg("#F0F3FF");
-    else setBg(background);
-  }, [background]);
+  const bg =
+    background === "primary"
+      ? "#2ecc71"
+      : background === "secondary"
+      ? "#95bfff"
+      : background === "common"
+      ? "#f0f3ff"
+      : background;
   return (
     <button
       onClick={onClick}

@@ -1,36 +1,37 @@
 :root {
   --width: calc(100vw);
+  --sidebar: 90px;
 }
 .hero-wrapper {
   width: 100%;
-  height: 100svh;
-  padding: 1.5% 2.5% 1.5% 2.5%;
+  height: 100vh;
   background-color: var(--bg);
   display: flex;
+  overflow-y: auto;
+  scroll-behavior: smooth;
 }
 .hero {
-  height: 100%;
-  width: calc(100% - 12vh);
-  border: 1px solid red;
+  min-height: 100%;
+  width: calc(100% - var(--sidebar));
   margin: auto;
-  margin-left: 11vh;
-  border-radius: 10px;
+  margin-left: var(--sidebar);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
 }
-.hero-footer {
-  border: 1px solid black;
-  width: 90%;
-}
 
 .hh {
-  width: 100%;
+  width: 98%;
+  margin: 0 auto 0;
+  flex-wrap: wrap;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.8em 0;
+  padding: 0.5em 0;
+}
+.menu-icon {
+  display: none;
 }
 .hh-left {
   font-size: 2em;
@@ -42,8 +43,8 @@
   justify-content: space-between;
 }
 .hh-theme {
-  height: 3.5em;
-  width: 3.5em;
+  height: 3em;
+  width: 3em;
   border: 1px solid black;
   border-radius: 50%;
   display: flex;
@@ -57,7 +58,7 @@
   width: 60%;
 }
 .hh-setting {
-  height: 3.5em;
+  height: 3em;
   width: 250px;
   margin-left: 0.5em;
   display: flex;
@@ -76,8 +77,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 2.5em;
-  width: 2.5em;
+  height: 2em;
+  width: 2em;
   background-color: var(--bg);
   color: black;
   border-radius: 50%;
@@ -87,8 +88,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 2.5em;
-  width: 2.5em;
+  height: 2em;
+  width: 2em;
   border-radius: 50%;
   margin: 0 4%;
 }
@@ -112,12 +113,13 @@
 }
 .hh-details span {
   font-size: 10px;
-  font-weight: normal;
+  font-weight: 200;
 }
 
 /* Header end */
 
 .hm {
+  height: auto;
   min-height: 200px;
   width: 100%;
   display: flex;
@@ -126,43 +128,126 @@
   padding: 0.8em 0;
 }
 .hm-para {
-  max-width: 600;
+  max-width: 400px;
   font-size: 20px;
   line-height: 2;
 }
-.chessboard-title{
-  font-size: 40px;
+.chessboard-title {
+  font-size: 2em;
   font-weight: bold;
   color: var(--pr);
   text-shadow: 0.1rem 0.1rem 0.2rem var(--sec);
   line-height: 0;
 }
 .hm-right-btns {
-  width: 40%;
   height: 100%;
+  min-height: 200px;
+  width: 30%;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: flex-start;
   justify-content: space-evenly;
 }
 .hf {
+  height: max-content;
   width: 100%;
-  height: 60%;
   display: flex;
+  flex-wrap: wrap; 
 }
-.footer-left{
-  width: 59%;
-  margin-right: auto;
-  background-color: red;
-  height: 100%;
-  border: none;
-  border-radius: 20px;
+.footer-left {
+  float: left;
+  width: 65%;
 }
+
+.footer-left img {
+  width: 100%;
+  height: auto;
+}
+
 .footer-right {
-  width: 39%;
+  margin: auto;
+  float: left;
+  width: 33%;
+}
+
+/* Make .footer-right take the same size as the image */
+.footer-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.hf-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+
+.hf-profile-icon {
+  width: 30px;
+  height: 30px;
+  background-color: #ccc;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.hf-result {
   margin-left: auto;
-  background-color: blue;
-  height: 100%;
-  border: none;
-  border-radius: 20px;
+}
+
+/* Media query for responsive layout */
+@media (max-width: 768px) {
+  .hf {flex-direction:  column;}
+  .footer-left,
+  .footer-right {
+    width: 98%; 
+    margin: auto;
+  }
+}
+
+
+/* Tabs */
+@media screen and (max-width: 800px) {
+  .menu-icon {
+    display: contents;
+    font-size: 1em;
+    margin-right: 8px;
+  }
+  .hero {
+    width: calc(100% - 16px);
+    margin-left: 0;
+    margin: auto;
+  }
+  .hh-setting {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 3em;
+    height: 3em;
+  }
+  .hh-setting-left {
+    display: none;
+  }
+  .hm{ min-width: 350px;}
+}
+@media screen and (max-width: 550px) {
+  .hm{
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 1em 0em;
+  }
+  .hm-para, .hm-right-btns{
+    width: 90%;
+    margin: auto;
+  }
+  .hm-para{font-size: 1em; text-align: left;}
+  .hm-right-btns {
+    align-items: center;
+  }
+  .hm-right-btns button { margin-top: 1.5em;}
+}
+/* Mobile */
+@media screen and (max-width: 420px) {
+  .hm-para{font-size: 1em;}
 }

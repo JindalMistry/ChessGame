@@ -11,12 +11,21 @@ import AiPopup from "../../popup/ai-popup/ai-popup";
 export default function Hero() {
   const [showFriendPopup, setFriendPopup] = useState(false);
   const [showAiPopup, setAiPopup] = useState(false);
+  const [toggle, setToggle] = useState(false);
+  const onsidebarToggle = () => {
+    setToggle(true);
+    setTimeout(() => {
+      setToggle(false);
+    }, 100);
+  };
   return (
     <div className="hero-wrapper">
-      <Sidebar />
+      <Sidebar toggle={toggle} />
       <div className="hero">
         <div className="hh">
-          <span className="hh-left">KingsBane</span>
+          <span className="hh-left">
+            <i class="fas fa-camera menu-icon" onClick={onsidebarToggle}></i> KingsBane
+          </span>
           <div className="hh-right">
             <div className="hh-theme">
               <img src={DarkThemeIcon} alt="select-theme" />
@@ -39,14 +48,14 @@ export default function Hero() {
         </div>
         <div className="hm">
           <div className="hm-para">
-            Experience the Thrill of Strategic warfare with <br /> KingsBane,
-            where each move holds the power to shape <br /> the destiny of
+            Experience the Thrill of Strategic warfare with KingsBane,
+            where each move holds the power to shape the destiny of
             empires on the <span className="chessboard-title">Chessboard</span>
           </div>
           <div className="hm-right-btns">
             <Button
               label={"Play online"}
-              className={"py-1 w-70p larger bold"}
+              className={"py-1 w-90p larger bold"}
               background={"primary"}
               loading={false}
               loadingType={"pulse"}
@@ -57,7 +66,7 @@ export default function Hero() {
             />
             <Button
               label={"Challenge AI"}
-              className={"py-1 w-70p larger bold"}
+              className={"py-1 w-90p larger bold"}
               background={"secondary"}
               loading={false}
               loadingType={"falling"}
@@ -69,7 +78,12 @@ export default function Hero() {
           </div>
         </div>
         <div className="hf">
-          <div className="footer-left"></div>
+          <div className="footer-left">
+            <img
+              src={"https://www.w3schools.com/css/img_5terre.jpg"}
+              alt="back"
+            />
+          </div>
           <div className="footer-right">
             <p>Past results</p>
             <div className="hf-item">
