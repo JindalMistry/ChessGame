@@ -77,7 +77,7 @@ export default function Hero() {
             />
           </div>
         </div>
-        {/* <div className="hf">
+        <div className="hf">
           <div className="footer-left">
             <img
               src={"https://www.w3schools.com/css/img_5terre.jpg"}
@@ -112,7 +112,7 @@ export default function Hero() {
               <div className="hf-result">Loss</div>
             </div>
           </div>
-        </div> */}
+        </div>
       </div>
       {showFriendPopup &&
         createPortal(
