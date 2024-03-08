@@ -1,9 +1,18 @@
-import React, {useRef, useEffect, useState} from "react";
+import React, { useRef, useEffect, useState } from "react";
 import CloseIcon from "../../../asset/modal-close-icon.svg";
 import { createPortal } from "react-dom";
 import "./modal.css";
 
-export default function Modal({ show, className, onClose, showHeading, label, children, size, height }) {
+export default function Modal({
+  show,
+  className,
+  onClose,
+  showHeading,
+  label,
+  children,
+  size,
+  height,
+}) {
   const width =
     size === "small"
       ? "30%"
@@ -26,17 +35,19 @@ export default function Modal({ show, className, onClose, showHeading, label, ch
     }
     return () => {
       window.removeEventListener("mousedown", (e) => {});
-    }
+    };
   }, [modalRef]);
   return createPortal(
     <div className={`modal-wrapper ${show ? "open" : "close"}`}>
       <div
-        style={{ width: width,  }}
-        className={`modal ${className} ${show ? "animate-open" : "animate-close"}`}
+        style={{ width: width }}
+        className={`modal ${className} ${
+          show ? "animate-open" : "animate-close"
+        }`}
         ref={modalRef}
       >
         {showHeading ? (
-          <div className="modal-header">
+          <div className="modal-header py-1">
             <span className="label">{label}</span>
             <span className="modal-close" onClick={onClose}>
               <img src={CloseIcon} alt="close-icon" />

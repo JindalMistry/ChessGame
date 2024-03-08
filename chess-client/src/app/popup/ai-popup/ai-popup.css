@@ -46,7 +46,9 @@
 .lvl-lrg {
   width: 40%;
 }
-.ai-start-game { width: 25%;}
+.ai-start-game {
+  width: 30%;
+}
 
 .game-difficulty .button {
   background-color: var(--pbt);
@@ -79,7 +81,9 @@
   .modal {
     width: 80% !important;
   }
-  .ai-start-game { width: 40%;}
+  .ai-start-game {
+    width: 30%;
+  }
 }
 @media screen and (max-width: 420px) {
   .modal {
@@ -92,6 +96,9 @@
     width: 30%;
   }
   .lvl-lrg {
+    width: 50%;
+  }
+  .ai-start-game {
     width: 50%;
   }
 }

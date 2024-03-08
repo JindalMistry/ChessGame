@@ -8,6 +8,7 @@ import FriendPopup from "../../popup/friend-popup/friend-popup";
 import Button from "../../component/button/button";
 import AiPopup from "../../popup/ai-popup/ai-popup";
 import iconcb from "../../../asset/iconcb.svg";
+import stonecb1 from "../../../asset/groupcb.svg";
 import { toastAlert } from "../../component/toastalert/toast-alert";
 
 export default function Hero() {
@@ -115,7 +116,7 @@ export default function Hero() {
           </div>
           <div className="hm-right-btns">
             <Button
-              label={"Play online"}
+              label={"Friendly Duel"}
               className={"py-1 w-90p larger bold"}
               background={"primary"}
               loading={false}
@@ -130,7 +131,7 @@ export default function Hero() {
               }}
             />
             <Button
-              label={"Challenge AI"}
+              label={"AI Challenge"}
               className={"py-1 w-90p larger bold"}
               background={"secondary"}
               loading={false}
@@ -143,9 +144,6 @@ export default function Hero() {
           </div>
         </div>
         <div className="hf">
-          <div className="footer-left">
-            <img src={iconcb} alt="back" />
-          </div>
           <div className="footer-right">
             <div className="hf-main">
               <div className="hf-header">
@@ -168,6 +166,9 @@ export default function Hero() {
                 })}
               </div>
             </div>
+          </div>
+          <div className="footer-left">
+            <img src={stonecb1} alt="back" />
           </div>
         </div>
       </div>
