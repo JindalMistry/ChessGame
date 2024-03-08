@@ -121,7 +121,8 @@
 .hm {
   height: auto;
   min-height: 200px;
-  width: 100%;
+  width: 98%;
+  margin: 0 auto;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
@@ -150,24 +151,11 @@
 }
 .hf {
   height: max-content;
-  width: 100%;
+  width: 98%;
+  margin: 0 auto 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-}
-.footer-left {
-  float: left;
-  width: 45%;
-  display: flex;
-  justify-content: center;
-  align-items: start;
-  border-radius: 40px;
-  border: 2px solid red;
-}
-
-.footer-left img {
-  width: 100%;
-  height: auto;
 }
 
 .footer-right {
@@ -328,5 +316,305 @@
 @media screen and (max-width: 420px) {
   .hm-para {
     font-size: 1em;
+  }
+  .wheel {
+    height: 300px;
+    width: 300px;
+  }
+}
+
+.footer-left {
+  height: 600px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+.animation-hero {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+/* .animation-hero {
+  --r: 20vmin;
+  --n: 5;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+.animation-hero div {
+  position: absolute;
+  top: var(--y);
+  left: var(--x);
+  transform: translate(-50%,-50%);  
+} */
+
+/* new */
+
+.wheel {
+  z-index: 0.5;
+  border-radius: 50%;
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  animation-name: wheel;
+  animation-duration: 20s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  background-color: inherit;
+  border: 10px solid var(--sbg);
+}
+
+.wheel::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: transparent;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 10px solid var(--sbg);
+}
+
+.cabin {
+  top: 50%;
+  left: 50%;
+  width: 30%;
+  height: 30%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+.cabin:nth-of-type(1) {
+  top: 0%;
+  left: 50%;
+}
+
+.cabin:nth-of-type(2) {
+  top: 10%;
+  left: 95%;
+}
+
+.cabin:nth-of-type(3) {
+  top: 32.5%;
+  left: 67.5%;
+}
+
+.cabin:nth-of-type(4) {
+  left: 100%;
+  top: 50%; 
+}
+
+.cabin:nth-of-type(5) {
+  top: 90%;
+  left: 95%;
+}
+.cabin:nth-of-type(6) {
+  top: 67.5%;
+  left: 67.5%;
+}
+
+.cabin:nth-of-type(7) {
+  top: 100%;
+  left: 50%;
+}
+
+.cabin:nth-of-type(8) {
+  top: 10%;
+  left: 5%;
+}
+
+.cabin:nth-of-type(9) {
+  top: 32.5%;
+  left: 32.5%;
+}
+
+.cabin:nth-of-type(10) {
+  top: 50%;
+  left: 0%;
+}
+.cabin:nth-of-type(11) {
+  left: 5%;
+  top: 90%;
+}
+
+.cabin:nth-of-type(12) {
+  top: 67.5%;
+  left: 32.5%;
+}
+
+@keyframes wheel {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes cabins {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+
+.cabin:nth-of-type(1) {
+  animation: cabins 5s ease-in-out infinite, cabin1 20s linear infinite;
+}
+
+.cabin:nth-of-type(2) {
+  animation: cabins 5s ease-in-out infinite, cabin2 20s linear infinite;
+}
+
+.cabin:nth-of-type(3) {
+  animation: cabins 5s ease-in-out infinite, cabin3 20s linear infinite;
+}
+
+.cabin:nth-of-type(4) {
+  animation: cabins 5s ease-in-out infinite, cabin4 20s linear infinite;
+}
+
+.cabin:nth-of-type(5) {
+  animation: cabins 5s ease-in-out infinite, cabin5 20s linear infinite;
+}
+.cabin:nth-of-type(6) {
+  animation: cabins 5s ease-in-out infinite, cabin6 20s linear infinite;
+}
+
+.cabin:nth-of-type(7) {
+  animation: cabins 5s ease-in-out infinite, cabin7 20s linear infinite;
+}
+
+.cabin:nth-of-type(8) {
+  animation: cabins 5s ease-in-out infinite, cabin8 20s linear infinite;
+}
+
+.cabin:nth-of-type(9) {
+  animation: cabins 5s ease-in-out infinite, cabin9 20s linear infinite;
+}
+
+.cabin:nth-of-type(10) {
+  animation: cabins 5s ease-in-out infinite, cabin10 20s linear infinite;
+}
+.cabin:nth-of-type(11) {
+  animation: cabins 5s ease-in-out infinite, cabin11 20s linear infinite;
+}
+
+.cabin:nth-of-type(12) {
+  animation: cabins 5s ease-in-out infinite, cabin12 20s linear infinite;
+}
+
+@keyframes cabin1 {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(-360deg);
+  }
+}
+
+@keyframes cabin2 {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(-360deg);
+  }
+}
+
+@keyframes cabin3 {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(-360deg);
+  }
+}
+
+@keyframes cabin4 {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(-360deg);
+  }
+}
+
+@keyframes cabin5 {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(-360deg);
+  }
+}
+@keyframes cabin6 {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(-360deg);
+  }
+}
+@keyframes cabin7 {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(-360deg);
+  }
+}
+@keyframes cabin8 {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(-360deg);
+  }
+}
+@keyframes cabin9 {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(-360deg);
+  }
+}
+@keyframes cabin10 {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(-360deg);
+  }
+}
+@keyframes cabin11 {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(-360deg);
+  }
+}
+@keyframes cabin12 {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(-360deg);
   }
 }

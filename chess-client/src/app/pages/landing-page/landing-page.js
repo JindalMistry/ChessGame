@@ -11,12 +11,37 @@ import Image2 from "../../../asset/hero-image-2.svg";
 import Image3 from "../../../asset/hero-image-3.svg";
 import Image4 from "../../../asset/hero-image-4.svg";
 import Image5 from "../../../asset/hero-image-5.svg";
+import whitepawn from "../../../asset/white-pawn.svg";
+import whiteking from "../../../asset/white-king.svg";
+import whiterook from "../../../asset/white-rook.svg";
+import whitequeen from "../../../asset/white-queen.svg";
+import whitehorse from "../../../asset/white-horse.svg";
+import whitebishop from "../../../asset/white-bishop.svg";
+import blackpawn from "../../../asset/black-pawn.svg";
+import blackking from "../../../asset/black-king.svg";
+import blackrook from "../../../asset/black-rook.svg";
+import blackqueen from "../../../asset/black-queen.svg";
+import blackhorse from "../../../asset/black-horse.svg";
+import blackbishop from "../../../asset/black-bishop.svg";
 
 export default function Hero() {
   const [showFriendPopup, setFriendPopup] = useState(false);
   const [showAiPopup, setAiPopup] = useState(false);
   const [toggle, setToggle] = useState(false);
-  const HeroImages = [Image1, Image2, Image3, Image4, Image5];
+  const HeroImages = [
+    whitepawn,
+    whiteking,
+    whiterook,
+    whitequeen,
+    whitehorse,
+    whitebishop,
+    blackpawn,
+    blackking,
+    blackrook,
+    blackqueen,
+    blackhorse,
+    blackbishop,
+  ];
   const data = [
     {
       img: "",
@@ -112,8 +137,9 @@ export default function Hero() {
         </div>
         <div className="hm">
           <div className="hm-para">
-            Experience the Thrill of Strategic warfare with KingsBane, where each move holds the power to shape the
-            destiny of empires on the <span className="chessboard-title">Chessboard</span>
+            Experience the Thrill of Strategic warfare with KingsBane, where
+            each move holds the power to shape the destiny of empires on the{" "}
+            <span className="chessboard-title">Chessboard</span>
           </div>
           <div className="hm-right-btns">
             <Button
@@ -164,19 +190,27 @@ export default function Hero() {
               </div>
             </div>
           </div> */}
-
-          <div className="buckets">
-            {HeroImages.map((item, index) => {
-              return (
-                <div>
-                  <span></span>
-                  {/* {<img src={item} alt="back" key={index} width={"40px"} />} */}
-                </div>
-              );
-            })}
+          <div className="footer-left">
+            <div className="animation-hero">
+              <div class="wheel">
+                {HeroImages.map((item, index) => {
+                  return (
+                    <div className="cabin">
+                      {
+                        <img
+                          src={item}
+                          alt="back"
+                          key={index}
+                          height={"100%"}
+                          width={"100%"}
+                        />
+                      }
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
-
-          {/* <div className="footer-left"></div> */}
         </div>
       </div>
       <FriendPopup
