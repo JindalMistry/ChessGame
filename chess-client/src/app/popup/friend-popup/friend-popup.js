@@ -8,11 +8,14 @@ export default function FriendPopup({ show, onClose }) {
   let arr = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
   ];
+
+  
   return (
-    <Modal label={"Play against a Friend"} onClose={onClose} show={show}>
-      <div className="modal-main">
-        <div className="modal-header">
-          <div className="modal-button">
+    <Modal label={"Play against a Friend"} onClose={onClose} show={show} showHeading = {true}
+    size = {"large"} className={'px-1'}>
+      <div className="fp-main">
+        <div className="fp-header">
+          <div className="fp-button">
             <Button
               label={"List"}
               className={`w-40p py-05`}
@@ -26,11 +29,11 @@ export default function FriendPopup({ show, onClose }) {
               variant={"shadowed"}
             />
           </div>
-          <div className="modal-input">
-            <Input className={"w-80p py-05"} placeholder={"Search"} />
+          <div className="fp-input">
+            <Input className={"w-90p py-05"} placeholder={"Search"} />
           </div>
         </div>
-        <ul className="modal-lists">
+        <ul className="fp-lists">
           {arr.map((i, e) => {
             return (
               <li className="list">
@@ -40,7 +43,7 @@ export default function FriendPopup({ show, onClose }) {
                 <p>100-50</p>
                 <Button
                   label={"Challange"}
-                  className={"w-10 py-05"}
+                  className={"w-9 py-05"}
                   variant={"shadowed"}
                   background={"primary"}
                 />
@@ -48,21 +51,6 @@ export default function FriendPopup({ show, onClose }) {
             );
           })}
         </ul>
-        {/* <div className="modal-lists">
-          {arr.map((item) => {
-            return (
-              <>
-                <div className="list">
-                  <div className="image"></div>
-                  <p>Jindal Mistry</p>
-                  <p>Legend</p>
-                  <p>100-50</p>
-                  <Button label={"Challange"} className={"px-2 py-05 bc-primary popup-list-button"} />
-                </div>
-              </>
-            );
-          })}
-        </div> */}
       </div>
     </Modal>
   );

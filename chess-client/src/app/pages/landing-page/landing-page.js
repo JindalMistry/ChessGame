@@ -51,9 +51,8 @@ export default function Hero() {
         </div>
         <div className="hm">
           <div className="hm-para">
-            Experience the Thrill of Strategic warfare with KingsBane, where
-            each move holds the power to shape the destiny of empires on the{" "}
-            <span className="chessboard-title">Chessboard</span>
+            Experience the Thrill of Strategic warfare with KingsBane, where each move holds the power to shape the
+            destiny of empires on the <span className="chessboard-title">Chessboard</span>
           </div>
           <div className="hm-right-btns">
             <Button
@@ -82,10 +81,7 @@ export default function Hero() {
         </div>
         <div className="hf">
           <div className="footer-left">
-            <img
-              src={"https://www.w3schools.com/css/img_5terre.jpg"}
-              alt="back"
-            />
+            <img src={"https://www.w3schools.com/css/img_5terre.jpg"} alt="back" />
           </div>
           <div className="footer-right">
             <p>Past results</p>
@@ -117,26 +113,18 @@ export default function Hero() {
           </div>
         </div>
       </div>
-      {showFriendPopup &&
-        createPortal(
-          <FriendPopup
-            show={true}
-            onClose={() => {
-              setFriendPopup(false);
-            }}
-          />,
-          document.body
-        )}
-      {showAiPopup &&
-        createPortal(
-          <AiPopup
-            show={true}
-            onClose={() => {
-              setAiPopup(false);
-            }}
-          />,
-          document.body
-        )}
+      <FriendPopup
+        show={showFriendPopup}
+        onClose={() => {
+          setFriendPopup(false);
+        }}
+      />
+      <AiPopup
+        show={showAiPopup}
+        onClose={() => {
+          setAiPopup(false);
+        }}
+      />
     </div>
   );
 }
