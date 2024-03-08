@@ -7,6 +7,7 @@ import { createPortal } from "react-dom";
 import FriendPopup from "../../popup/friend-popup/friend-popup";
 import Button from "../../component/button/button";
 import AiPopup from "../../popup/ai-popup/ai-popup";
+import { toastAlert } from "../../component/toastalert/toast-alert";
 
 export default function Hero() {
   const [showFriendPopup, setFriendPopup] = useState(false);
@@ -63,7 +64,8 @@ export default function Hero() {
               loadingType={"pulse"}
               variant={"shadowed"}
               onClick={() => {
-                setFriendPopup(true);
+                // setFriendPopup(true);
+                toastAlert("This functionality is still pending, please try again later.", "ERROR");
               }}
             />
             <Button

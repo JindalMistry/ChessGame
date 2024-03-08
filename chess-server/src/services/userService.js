@@ -1,6 +1,8 @@
 import User from "../models/User.js"; // Adjust the path based on your project structure
 import jwt from "jsonwebtoken";
 import nodemailer from "nodemailer";
+import { UserStatusEnum } from "../models/enum/Enum.js";
+import { sendEmail } from "./emailService.js";
 
 // Register User
 async function userRegister(req, res) {
@@ -10,7 +12,7 @@ async function userRegister(req, res) {
     if (!emailRegex.test(req.body.email)) {
       return res
         .status(400)
-        .json({ message: "Please provide valid email format" });
+        .json({ message: "Please provide a valid email" });
     }
 
     // Check if the username or email already exists
@@ -58,7 +60,7 @@ async function userLogin(req, res) {
     }
 
     // Update user status to "ONLINE"
-    user.status = "ACTIVE";
+    user.status = UserStatusEnum.ACTIVE;
     await user.save();
 
     // Generate JWT token with a 7-day expiration
@@ -68,7 +70,7 @@ async function userLogin(req, res) {
 
     const { password, ...info } = user._doc;
 
-    res.status(200).json({ info, token });
+    res.status(200).json({ info, token, message : "User has logged in successfully." });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -84,7 +86,7 @@ async function userLogout(req, res) {
     if (!updatedUser) {
       return res.status(404).json({ message: "User not found" });
     }
-    updatedUser.status = "INACTIVE";
+    updatedUser.status = UserStatusEnum.INACTIVE;
     await updatedUser.save();
 
     return res.status(200).json({ updatedUser });
@@ -93,60 +95,36 @@ async function userLogout(req, res) {
   }
 }
 
-// sent mail for Reset Password
-// Create a Nodemailer transporter
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: "ritace31@gmail.com",
-    pass: "vemj aeop rfio fifg",
-  },
-});
-
-// Example in-memory database for storing temporary passwords
-const temporaryPasswords = {};
-
 async function resetPassword(req, res) {
   try {
     const { email } = req.body;
     const user = await User.findOne({ email });
 
-    // If the user is not found, respond with an error
     if (!user) {
       return res
         .status(404)
         .json({ success: false, message: "User not found." });
     }
 
-    // Generate a temporary password (you might want to use a more secure method)
     const temporaryPassword = Math.random().toString(36).slice(-8);
 
-    // Set up email options
-    const mailOptions = {
-      from: "mistryriteshv100@gmail.com",
-      to: email,
-      subject: "Password Reset",
-      text: `Your temporary password is: ${temporaryPassword}`,
-    };
+    await sendEmail(
+      email,
+      "Password reset",
+      `Your temporary password is ${temporaryPassword}`
+    );
 
-    // Send the email
-    const info = await transporter.sendMail(mailOptions);
-
-    // If the email is sent successfully, update the temporary password in the database
     if (info.accepted.length > 0) {
       user.password = temporaryPassword;
       await user.save();
-      // You should update the user's password in your database here
-
-      // Respond with a success message
+      
       res.json({
-        success: true,
-        message: "Temporary password sent successfully.",
+        message: `Temporary password has been sent to ${email}.`,
       });
     } else {
       res
         .status(500)
-        .json({ success: false, message: "Failed to send email." });
+        .json({ message: "Failed to send email." });
     }
   } catch (error) {
     console.error(error);
@@ -158,30 +136,25 @@ async function changePassword(req, res) {
   try {
     const { username, password } = req.body;
 
-    // Check if the user exists
     const user = await User.findOne({ username });
 
     if (!user) {
       return res.status(404).json({ message: "User does not exist!" });
     }
 
-    // Check if the new password is different from the existing password
     if (password === user.password) {
       return res.status(400).json({
         message: "New password must be different from the existing password.",
       });
     }
 
-    // Update the password in the database
     user.password = password;
     await user.save();
 
-    // Respond with a success message and the updated user data
     return res
       .status(201)
-      .json({ data: user, message: "Password updated successfully." });
+      .json({ ...user, message: "Password updated successfully." });
   } catch (err) {
-    // Handle unexpected errors
     console.error(err);
     return res.status(500).json({ message: "Internal server error." });
   }
