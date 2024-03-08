@@ -1,6 +1,6 @@
 import User from "../models/User.js"; // Adjust the path based on your project structure
 import jwt from "jsonwebtoken";
-import nodemailer from "nodemailer";
+
 import { UserStatusEnum } from "../models/enum/Enum.js";
 import { sendEmail } from "./emailService.js";
 
