@@ -7,12 +7,69 @@ import { createPortal } from "react-dom";
 import FriendPopup from "../../popup/friend-popup/friend-popup";
 import Button from "../../component/button/button";
 import AiPopup from "../../popup/ai-popup/ai-popup";
+import iconcb from "../../../asset/iconcb.svg";
 import { toastAlert } from "../../component/toastalert/toast-alert";
 
 export default function Hero() {
   const [showFriendPopup, setFriendPopup] = useState(false);
   const [showAiPopup, setAiPopup] = useState(false);
   const [toggle, setToggle] = useState(false);
+  const data = [
+    {
+      img: "",
+      name: "Jindal Mistry",
+      title: "legend",
+      result: "Loss",
+    },
+    {
+      img: "",
+      name: "Jindal Mistry",
+      title: "legend",
+      result: "Loss",
+    },
+    {
+      img: "",
+      name: "Jindal Mistry",
+      title: "legend",
+      result: "Loss",
+    },
+    {
+      img: "",
+      name: "Jindal Mistry",
+      title: "legend",
+      result: "Loss",
+    },
+    {
+      img: "",
+      name: "Jindal Mistry",
+      title: "legend",
+      result: "Loss",
+    },
+    {
+      img: "",
+      name: "Jindal Mistry",
+      title: "legend",
+      result: "Loss",
+    },
+    {
+      img: "",
+      name: "Jindal Mistry",
+      title: "legend",
+      result: "Loss",
+    },
+    {
+      img: "",
+      name: "Jindal Mistry",
+      title: "legend",
+      result: "Loss",
+    },
+    {
+      img: "",
+      name: "Jindal Mistry",
+      title: "legend",
+      result: "Loss",
+    },
+  ];
   const onsidebarToggle = () => {
     setToggle(true);
     setTimeout(() => {
@@ -52,8 +109,9 @@ export default function Hero() {
         </div>
         <div className="hm">
           <div className="hm-para">
-            Experience the Thrill of Strategic warfare with KingsBane, where each move holds the power to shape the
-            destiny of empires on the <span className="chessboard-title">Chessboard</span>
+            Experience the Thrill of Strategic warfare with KingsBane, where
+            each move holds the power to shape the destiny of empires on the{" "}
+            <span className="chessboard-title">Chessboard</span>
           </div>
           <div className="hm-right-btns">
             <Button
@@ -65,7 +123,10 @@ export default function Hero() {
               variant={"shadowed"}
               onClick={() => {
                 // setFriendPopup(true);
-                toastAlert("This functionality is still pending, please try again later.", "ERROR");
+                toastAlert(
+                  "This functionality is still pending, please try again later.",
+                  "ERROR"
+                );
               }}
             />
             <Button
@@ -83,34 +144,29 @@ export default function Hero() {
         </div>
         <div className="hf">
           <div className="footer-left">
-            <img src={"https://www.w3schools.com/css/img_5terre.jpg"} alt="back" />
+            <img src={iconcb} alt="back" />
           </div>
           <div className="footer-right">
-            <p>Past results</p>
-            <div className="hf-item">
-              <div className="hf-profile-icon"></div>
-              <div className="hf-details"></div>
-              <div className="hf-result">Loss</div>
-            </div>
-            <div className="hf-item">
-              <div className="hf-profile-icon"></div>
-              <div className="hf-details"></div>
-              <div className="hf-result">Loss</div>
-            </div>
-            <div className="hf-item">
-              <div className="hf-profile-icon"></div>
-              <div className="hf-details"></div>
-              <div className="hf-result">Loss</div>
-            </div>
-            <div className="hf-item">
-              <div className="hf-profile-icon"></div>
-              <div className="hf-details"></div>
-              <div className="hf-result">Loss</div>
-            </div>
-            <div className="hf-item">
-              <div className="hf-profile-icon"></div>
-              <div className="hf-details"></div>
-              <div className="hf-result">Loss</div>
+            <div className="hf-main">
+              <div className="hf-header">
+                <p>Past results</p>
+              </div>
+              <div className="hf-footer">
+                {data.map((item, index) => {
+                  return (
+                    <div className="hf-item">
+                      <div className="hf-item-left">
+                        <div className="hf-profile-icon"></div>
+                        <div className="hf-details">
+                          <p>{item.name}</p>
+                          <p>{item.title}</p>
+                        </div>
+                      </div>
+                      <div className="hf-result">{item.result}</div>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>
