@@ -8,10 +8,8 @@
 }
 
 .register {
-  width: 25%;
-  height: 75vh;
-  max-height: 450px;
-  max-width: 350px;
+  width: 350px;
+  height: 450px;
   border: 1px solid black;
   border-radius: 30px;
   display: flex;
@@ -64,4 +62,17 @@
 }
 span a {
   text-decoration: none;
+}
+
+@media screen and (max-width: 800px) {
+}
+@media screen and (max-width: 420px) {
+  .register{
+    width: 80%;
+  }
+}
+@media screen and (max-width: 300px) {
+  .register{
+    width: 90%;
+  }
 }
