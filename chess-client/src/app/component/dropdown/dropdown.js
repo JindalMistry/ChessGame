@@ -3,21 +3,29 @@ import "./dropdown.css";
 import DropdownIcon from "../../../asset/drop-down-icon.svg";
 import { useTheme } from "../../context/ThemeContext";
 
-const Dropdown = ({ label, list, onChange, sel, classMain, classItem }) => {
+const Dropdown = ({ label, selected, list, onSelect, classMain, classItem }) => {
   const dropdownMainRef = useRef();
   const [isActive, setIsActive] = useState(false);
-  const [selected, setIsSelected] = useState("Choose one");
+  const [selectedValue, setSelectedValue] = useState(selected);
+  const [pos, setPos] = useState("bottom");
   const dropdownRef = useRef(null);
   const { isDarkTheme } = useTheme();
+
+  useEffect(() => {
+    if (selected) {
+      setSelectedValue(selected);
+    }
+  }, [selected]);
 
   useEffect(() => {
     // Handle dropdown positioning based on its position relative to the viewport
     if (dropdownRef.current) {
       const dropdownRect = dropdownRef.current.getBoundingClientRect();
       const windowHeight = window.innerHeight;
-
       if (dropdownRect.bottom > windowHeight) {
-        dropdownRect.classList.toggle("dropdown-content-top");
+        setPos("top");
+      } else {
+        setPos("bottom");
       }
     }
   }, []);
@@ -32,6 +40,16 @@ const Dropdown = ({ label, list, onChange, sel, classMain, classItem }) => {
     });
   }, []);
 
+  const getLabel = () => {
+    if (list) {
+      let obj = list.find((o) => o.key === selectedValue);
+      if (obj) {
+        return obj.value;
+      }
+      return "Not found";
+    }
+    return "Not found";
+  };
   return (
     <div className={`dropdown`} ref={dropdownMainRef}>
       {label && <div className="dropdown-label">{label}</div>}
@@ -41,30 +59,31 @@ const Dropdown = ({ label, list, onChange, sel, classMain, classItem }) => {
         }}
         className={`${classMain} dropdown-btn`}
       >
-        {selected}
+        {getLabel()}
         <img
           src={DropdownIcon}
           alt="dropdown-icon"
-          className={`${
-            isActive ? "open-dropdown-icon" : "close-dropdown-icon"
-          } ${!isDarkTheme && "invert-theme-icon"} dropdown-icon`}
+          className={`${isActive ? "open-dropdown-icon" : "close-dropdown-icon"} ${
+            !isDarkTheme && "invert-theme-icon"
+          } dropdown-icon`}
         />
       </div>
       <div
-        className={`${classItem} dropdown-content ${
-          isActive ? "open-dropdown-content" : "close-dropdown-content"
-        }`}
+        className={` 
+           ${isActive ? "open-dropdown-content" : "close-dropdown-content"}
+           ${pos === "bottom" ? "dropdown-content" : "dropdown-content-top"}
+          `}
         ref={dropdownRef}
       >
         {list.map((item) => (
           <div
             key={item.key}
             onClick={() => {
-              setIsSelected(item.value);
+              setSelectedValue(item.key);
               setIsActive(!isActive);
-              onChange(item);
+              onSelect(item);
             }}
-            className="item"
+            className={`${classItem} dropdown-item`}
           >
             {item.value}
           </div>
@@ -78,7 +97,7 @@ Dropdown.defaultProps = {
   label: "",
   list: [],
   selected: "",
-  onChange: () => {},
+  onSelect: () => {},
   classMain: "",
   classItem: "",
 };
