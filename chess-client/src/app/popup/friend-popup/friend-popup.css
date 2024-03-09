@@ -77,11 +77,13 @@
   .fp-lists {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    column-gap: 20px; 
+    column-gap: 20px;
   }
-  .list { border-radius: 25px; flex-direction: column; gap: 8px;}
+  .list {
+    border-radius: 25px;
+    flex-direction: column;
+    gap: 8px;
+  }
 }
 @media screen and (max-width: 420px) {
 }
-
-

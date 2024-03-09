@@ -22,12 +22,13 @@ export const ThemeProvider = ({ children }) => {
         <style>
           {`
             :root {
-                --bg: ${isDarkTheme ? "white" : "white"};
-                --sbg: ${isDarkTheme ? "#424040" : "aliceblue"};
+                --bg: ${isDarkTheme ? "white" : "#424040"};
+                --sbg: ${isDarkTheme ? "#424040" : "#D8D8D8"};
                 --pr: ${isDarkTheme ? "#2ecc71" : "#2ecc71"};
                 --reg: ${isDarkTheme ? "white" : "#f0f3ff"};
                 --sec: ${isDarkTheme ? "#95bfff" : "#95bfff"};
                 --txt: ${isDarkTheme ? "white" : "black"};
+                --tbg: ${isDarkTheme ? "#D8D8D8" : "#424040"}
             }
           `}
         </style>

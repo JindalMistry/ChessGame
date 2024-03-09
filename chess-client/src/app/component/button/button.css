@@ -21,7 +21,9 @@
   box-shadow: 0 0 0 0.2rem rgba(79, 66, 255, 0.4);
   border: none;
 }
-
+.button p {
+  color: black;
+}
 .flashing {
   position: relative;
   width: 10px;

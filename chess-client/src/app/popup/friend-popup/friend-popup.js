@@ -3,16 +3,21 @@ import Modal from "../../component/model/modal";
 import "./friend-popup.css";
 import Input from "../../component/input/input";
 import Button from "../../component/button/button";
-
+import { useTheme } from "../../context/ThemeContext";
 export default function FriendPopup({ show, onClose }) {
   let arr = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
   ];
-
-  
+  const { isDarkTheme } = useTheme;
   return (
-    <Modal label={"Play against a Friend"} onClose={onClose} show={show} showHeading = {true}
-    size = {"large"} className={'px-1'}>
+    <Modal
+      label={"Play against a Friend"}
+      onClose={onClose}
+      show={show}
+      showHeading={true}
+      size={"large"}
+      className={"px-1"}
+    >
       <div className="fp-main">
         <div className="fp-header">
           <div className="fp-button">

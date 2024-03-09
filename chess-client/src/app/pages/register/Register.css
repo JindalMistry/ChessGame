@@ -1,23 +1,47 @@
-.register-wrapper {
+.register-wrapper-light {
   width: 100%;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
+  overflow: hidden;
+  background-image: url("../../../asset/white-background.jpg");
+  background-size: contain;
+  background-repeat: repeat;
+  background-blend-mode: hard-light;
+  background-repeat: repeat;
+  background-position: 0 0;
+  background-size: auto 100%;
+  /*adjust s value for speed*/
+  animation: animatedBackground 500s linear infinite;
+}
+.register-wrapper-dark {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-image: url("../../../asset/black-background.jpg");
+  background-size: contain;
+  background-repeat: repeat;
+  background-blend-mode: hard-light;
+  background-repeat: repeat;
+  background-position: 0 0;
+  background-size: auto 100%;
+  /*adjust s value for speed*/
+  animation: animatedBackground 500s linear infinite;
 }
 
 .register {
   width: 350px;
   height: 450px;
-  border: 1px solid black;
   border-radius: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  border-bottom: 4px solid black;
-  border-right: 4px solid black;
+  background-color: var(--sbg);
 }
 
 .register .header {
@@ -67,12 +91,12 @@ span a {
 @media screen and (max-width: 800px) {
 }
 @media screen and (max-width: 420px) {
-  .register{
+  .register {
     width: 80%;
   }
 }
 @media screen and (max-width: 300px) {
-  .register{
+  .register {
     width: 90%;
   }
 }

@@ -15,7 +15,7 @@
   margin: 0.4rem 0rem;
   display: flex;
   align-items: center;
-  background-color: #424040;
+  background-color: var(--sbg);
 }
 
 .player-image {
@@ -28,6 +28,9 @@
   justify-content: center;
   align-items: center;
 }
+.player-image h1 {
+  color: black;
+}
 
 .game-difficulty {
   width: 100%;
@@ -39,6 +42,7 @@
   justify-content: flex-start;
   background-color: #424040;
   flex-wrap: wrap;
+  background-color: var(--sbg);
 }
 .lvl-sml {
   width: 20%;
@@ -62,7 +66,7 @@
   margin: 0.4rem 0rem;
   display: flex;
   align-items: center;
-  background-color: #424040;
+  background-color: var(--sbg);
 }
 
 .game-duration .button {

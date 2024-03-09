@@ -25,8 +25,10 @@ import blackqueen from "../../../asset/black-queen.svg";
 import blackhorse from "../../../asset/black-horse.svg";
 import blackbishop from "../../../asset/black-bishop.svg";
 import { useTheme } from "../../context/ThemeContext";
+import { useNavigate } from "react-router-dom";
 
 export default function Hero() {
+  const Navigate = useNavigate();
   const [showFriendPopup, setFriendPopup] = useState(false);
   const [showAiPopup, setAiPopup] = useState(false);
   const [toggle, setToggle] = useState(false);
@@ -126,7 +128,7 @@ export default function Hero() {
             <div
               className="hh-theme"
               onClick={toggleTheme}
-              style={{ color: isDarkTheme ? "white" : "black" }}
+              style={{ color: isDarkTheme ? "white" : "var(--sbg) " }}
             >
               <img
                 src={isDarkTheme ? LightThemeIcon : DarkThemeIcon}
@@ -165,7 +167,8 @@ export default function Hero() {
               loadingType={"pulse"}
               variant={"shadowed"}
               onClick={() => {
-                setFriendPopup(true);
+                // setFriendPopup(true);
+                Navigate("/login");
               }}
             />
             <Button
@@ -174,10 +177,10 @@ export default function Hero() {
               background={"secondary"}
               loading={false}
               loadingType={"falling"}
+              variant={"shadowed"}
               onClick={() => {
                 setAiPopup(true);
               }}
-              variant={"shadowed"}
             />
           </div>
         </div>

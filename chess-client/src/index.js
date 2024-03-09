@@ -4,24 +4,28 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "./app/global.css";
 import { ToastContainer } from "react-toastify";
+import store from "./app/redux/store";
+import { Provider } from "react-redux";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
     <ToastContainer
-        position="bottom-center"
-        autoClose={2000}
-        hideProgressBar={true}
-        newestOnTop={true}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable={true}
-        pauseOnHover={false}
-        progressClassName="toastProgress"
-        bodyClassName="toastBody"
-      />
+      position="bottom-center"
+      autoClose={2000}
+      hideProgressBar={true}
+      newestOnTop={true}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable={true}
+      pauseOnHover={false}
+      progressClassName="toastProgress"
+      bodyClassName="toastBody"
+    />
   </React.StrictMode>
 );
 

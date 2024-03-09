@@ -136,6 +136,7 @@
 }
 .hh-profile span {
   font-size: 2em;
+  color: var(--sbg);
 }
 .hh-details {
   color: var(--txt);
@@ -318,7 +319,7 @@
   animation-iteration-count: infinite;
   animation-timing-function: linear;
   background-color: inherit;
-  border: 10px solid var(--sbg);
+  border: 10px solid var(--tbg);
 }
 
 .wheel::before {
@@ -331,7 +332,7 @@
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  border: 10px solid var(--sbg);
+  border: 10px solid var(--tbg);
 }
 
 .cabin {

@@ -6,8 +6,7 @@
   box-sizing: border-box;
   font-family: "DM Sans", sans-serif;
   font-optical-sizing: auto;
-  /* color: var(--txt); */
-  color: black;
+  color: var(--txt);
 }
 
 .smaller {
@@ -187,8 +186,8 @@
 }
 .shadowed {
   border: none;
-  border-bottom: 3px solid black;
-  border-right: 3px solid black;
+  border-bottom: 3px solid var(--tbg);
+  border-right: 3px solid var(--tbg);
 }
 .clean {
   border: none;

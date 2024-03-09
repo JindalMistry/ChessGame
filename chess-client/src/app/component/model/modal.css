@@ -13,6 +13,7 @@
   font-size: x-large;
   padding-left: 1em;
   font-weight: 900;
+  color: var(--sbg);
 }
 
 .modal-close {
@@ -32,7 +33,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  background-color: rgba(120, 120, 120, 0.6);
+  background-color: rgba(79, 66, 255, 0.3);
   overflow: hidden;
 }
 .modal {
@@ -43,6 +44,7 @@
   border-radius: 20px;
   overflow: hidden;
   overflow-y: auto;
+  background-color: var(--bg);
 }
 
 .open {

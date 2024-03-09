@@ -3,11 +3,17 @@ import "./Register.css";
 import Input from "../../component/input/input";
 import Button from "../../component/button/button";
 import "../../global.css";
+import { useTheme } from "../../context/ThemeContext";
 
 export default function Register() {
+  const { isDarkTheme } = useTheme();
   return (
-    <div className="register-wrapper">
-      <div className="register">
+    <div
+      className={
+        isDarkTheme ? "register-wrapper-dark" : "register-wrapper-light"
+      }
+    >
+      <div className="register shadowed">
         <header className="header ">
           <h1>Sign up</h1>
         </header>
