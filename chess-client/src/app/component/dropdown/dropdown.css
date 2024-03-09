@@ -1,0 +1,79 @@
+/* Dropdown.css */
+.dropdown {
+  margin: 0 auto;
+  z-index: 10000;
+  position: relative;
+  width: 100%;
+}
+
+.dropdown,
+.dropdown * {
+  z-index: 10;
+}
+
+.dropdown-label {
+  text-align: left;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.dropdown .dropdown-btn {
+  cursor: pointer;
+  background: var(--sbg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 30px;
+  color: var(--txt);
+  font-weight: 500;
+  padding: 0 1em;
+}
+
+.dropdown-content-top {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  bottom: calc(100% + 10px); /* Adjust the spacing as needed */
+}
+.dropdown-content {
+  position: absolute;
+  left: 0;
+  width: 100%;
+}
+.dropdown-content .item {
+  margin-top: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 30px;
+  background-color: var(--pr);
+  text-align: left;
+}
+
+.open-dropdown-icon {
+  transform: rotate(180deg);
+  transition: transform 0.4s ease-in-out;
+}
+
+.close-dropdown-icon {
+  transform: rotate(0deg);
+  transition: transform 0.4s ease-in-out;
+}
+.dropdown-icon {
+  height: 20px;
+  width: 20px;
+}
+
+.dropdown-content {
+  -webkit-transition: max-height 0.4s;
+  -moz-transition: max-height 0.4s;
+  -ms-transition: max-height 0.4s;
+  -o-transition: max-height 0.4s;
+  transition: max-height 0.4s ease-in-out;
+  overflow: hidden;
+  background-color: transparent;
+  max-height: 0;
+}
+
+.open-dropdown-content {
+  max-height: 400px;
+}

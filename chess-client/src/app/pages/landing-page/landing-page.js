@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./landing.css";
 import Sidebar from "../../component/sidebar/sidebar";
 import SettingsIcon from "../../../asset/setting-icon.svg";
 import DarkThemeIcon from "../../../asset/dark-theme-icon.svg";
+import LightThemeIcon from "../../../asset/light-theme-icon.svg";
 import FriendPopup from "../../popup/friend-popup/friend-popup";
 import Button from "../../component/button/button";
 import AiPopup from "../../popup/ai-popup/ai-popup";
@@ -23,11 +24,13 @@ import blackrook from "../../../asset/black-rook.svg";
 import blackqueen from "../../../asset/black-queen.svg";
 import blackhorse from "../../../asset/black-horse.svg";
 import blackbishop from "../../../asset/black-bishop.svg";
+import { useTheme } from "../../context/ThemeContext";
 
 export default function Hero() {
   const [showFriendPopup, setFriendPopup] = useState(false);
   const [showAiPopup, setAiPopup] = useState(false);
   const [toggle, setToggle] = useState(false);
+  const { toggleTheme, isDarkTheme } = useTheme();
   const HeroImages = [
     whitepawn,
     whiteking,
@@ -105,7 +108,11 @@ export default function Hero() {
     }, 100);
   };
   return (
-    <div className="hero-wrapper">
+    <div
+      className={`${
+        isDarkTheme ? "black-theme-background" : "white-theme-background"
+      } hero-wrapper`}
+    >
       <Sidebar toggle={toggle} />
       <div className="hero">
         <div className="hh">
@@ -116,8 +123,16 @@ export default function Hero() {
             KingsBane
           </span>
           <div className="hh-right">
-            <div className="hh-theme">
-              <img src={DarkThemeIcon} alt="select-theme" />
+            <div
+              className="hh-theme"
+              onClick={toggleTheme}
+              style={{ color: isDarkTheme ? "white" : "black" }}
+            >
+              <img
+                src={isDarkTheme ? LightThemeIcon : DarkThemeIcon}
+                alt="select-theme"
+                className={isDarkTheme ? "invert-theme-icon" : ""}
+              />
             </div>
             <div className="hh-setting">
               <div className="hh-setting-left">

@@ -13,10 +13,11 @@
   background: var(--sbg);
   display: flex;
   flex-direction: column;
-  color: var(--bg);
+  color: var(--txt);
   overflow: hidden;
   user-select: none;
   z-index: 2;
+  border-right: 5px ridge var(--txt);
 }
 #layer {
   position: absolute;

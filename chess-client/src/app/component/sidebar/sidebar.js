@@ -11,8 +11,10 @@ import HelpSupport from "../../../asset/help-support.svg";
 import logout from "../../../asset/logout-icon.png";
 import Logo from "../../../asset/main-logo.svg";
 import "./sidebar.css";
+import { useTheme } from "../../context/ThemeContext";
 
 export default function Sidebar({ toggle }) {
+  const { isDarkTheme, toggleTheme } = useTheme();
   const sidebarItem = [
     { label: "Local Multiplayer", img: PlayOnline, h: 60, w: 60 },
     { label: "AI Challenge", img: PlayAI, h: 55, w: 55 },
@@ -58,7 +60,13 @@ export default function Sidebar({ toggle }) {
           <label for="nav-toggle" className="sidebar-cross">
             {checked ? (
               <i class="fas">
-                <img src={Logo} alt="vsFriend" className="main-logo" />
+                <img
+                  src={Logo}
+                  alt="vsFriend"
+                  className={`main-logo ${
+                    !isDarkTheme ? "invert-theme-icon" : ""
+                  }`}
+                />
               </i>
             ) : (
               <i class="fa-regular fa-circle-xmark"></i>
