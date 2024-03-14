@@ -10,9 +10,7 @@ async function userRegister(req, res) {
     // Check if the email is in a valid format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(req.body.email)) {
-      return res
-        .status(400)
-        .json({ message: "Please provide a valid email" });
+      return res.status(200).json({ message: "Please provide a valid email" });
     }
 
     // Check if the username or email already exists
@@ -22,7 +20,7 @@ async function userRegister(req, res) {
 
     if (existingUser) {
       return res
-        .status(400)
+        .status(200)
         .json({ message: "Username or email already exists" });
     }
 
@@ -37,7 +35,9 @@ async function userRegister(req, res) {
     const newUser = await user.save();
 
     // Send the new user in the response
-    res.status(201).json(newUser);
+    res
+      .status(201)
+      .json({ message: "Registration succesfully completed", user: newUser });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -47,16 +47,18 @@ async function userRegister(req, res) {
 async function userLogin(req, res) {
   try {
     // Find the user by username
-    const user = await User.findOne({ username: req.body.username });
+    const user = await User.findOne({ email: req.body.email });
 
     // Check if the user exists or not
     if (!user) {
-      return res.status(401).json({ message: "User not found!" });
+      return res
+        .status(201)
+        .json({ message: "Please ener valid email address" });
     }
 
     //check if the password same or not
     if (req.body.password !== user.password) {
-      return res.status(401).json({ message: "Please enter valid password" });
+      return res.status(201).json({ message: "Please enter valid password" });
     }
 
     // Update user status to "ONLINE"
@@ -70,7 +72,11 @@ async function userLogin(req, res) {
 
     const { password, ...info } = user._doc;
 
-    res.status(200).json({ info, token, message : "User has logged in successfully." });
+    res.status(200).json({
+      data: info,
+      token: token,
+      message: `Welcome ${user.username} to KingsBane`,
+    });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -117,14 +123,12 @@ async function resetPassword(req, res) {
     if (info.accepted.length > 0) {
       user.password = temporaryPassword;
       await user.save();
-      
+
       res.json({
         message: `Temporary password has been sent to ${email}.`,
       });
     } else {
-      res
-        .status(500)
-        .json({ message: "Failed to send email." });
+      res.status(500).json({ message: "Failed to send email." });
     }
   } catch (error) {
     console.error(error);

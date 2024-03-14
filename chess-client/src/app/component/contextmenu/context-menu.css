@@ -1,7 +1,6 @@
 .context-wrapper {
   position: relative;
 }
-
 .show-context {
   opacity: 1;
   visibility: visible;
@@ -57,17 +56,21 @@
   transition: filter 0.3s ease-in-out;
   cursor: pointer;
 }
-.context-item:hover {
+.context-item p:hover {
   filter: invert(100%);
 }
 .context-item-image {
-  height: 2em;
-  width: 2em;
-  background-color: var(--txt);
+  height: 2.5em;
+  width: 2.5em;
   border-radius: 50%;
+  overflow: hidden;
 }
 .context-item p {
   padding-left: 1em;
   font-size: 1em;
   color: var(--txt);
+}
+.context-menu img {
+  height: 100%;
+  width: 100%;
 }

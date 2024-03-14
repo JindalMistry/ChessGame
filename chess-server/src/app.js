@@ -4,13 +4,17 @@ import dotenv from "dotenv";
 import swaggerUi from "swagger-ui-express";
 import swaggerDocument from "./swagger-output.json" assert { type: "json" };
 import UserController from "./controllers/userController.js";
+import cors from "cors";
 
 dotenv.config(); // Load environment variables from .env file
-
 const app = express();
 
-//swagger
-
+app.use(
+  cors({
+    origin: "http://localhost:3001",
+    credentials: true,
+  })
+);
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());

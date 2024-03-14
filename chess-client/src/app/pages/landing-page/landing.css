@@ -129,6 +129,7 @@
   width: 2em;
   border-radius: 50%;
   margin: 0 4%;
+  cursor: pointer;
 }
 .hh-setting-btn img {
   height: 40px;

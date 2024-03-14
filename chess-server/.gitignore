@@ -1,3 +1,4 @@
 /node_modules
 /.env
 /D
+/src/swagger-output.json

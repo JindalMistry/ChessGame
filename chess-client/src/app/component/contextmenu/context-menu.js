@@ -1,6 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./context-menu.css";
-const ContextMenu = ({ list, showIcon, content, position, onSelect, selected }) => {
+const ContextMenu = ({
+  list,
+  showIcon,
+  content,
+  position,
+  onSelect,
+  selected,
+}) => {
   const contextRef = useRef();
   const contentRef = useRef();
   const [IsActive, setIsActive] = useState(false);
@@ -26,8 +33,16 @@ const ContextMenu = ({ list, showIcon, content, position, onSelect, selected }) 
 
   useEffect(() => {
     window.addEventListener("mousedown", (e) => {
-      if (contextRef && contextRef.current && contentRef && contentRef.current) {
-        if (!contentRef.current?.contains(e.target) && !contextRef.current?.contains(e.target)) {
+      if (
+        contextRef &&
+        contextRef.current &&
+        contentRef &&
+        contentRef.current
+      ) {
+        if (
+          !contentRef.current?.contains(e.target) &&
+          !contextRef.current?.contains(e.target)
+        ) {
           setIsActive(false);
         }
       }
@@ -36,7 +51,7 @@ const ContextMenu = ({ list, showIcon, content, position, onSelect, selected }) 
 
   return (
     <div className="context-wrapper" onClick={toggleContext}>
-      <div ref={contentRef}>{content}</div>
+      <div ref={contentRef}> {content}</div>
       <div
         ref={contextRef}
         className={`

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./landing.css";
 import Sidebar from "../../component/sidebar/sidebar";
 import SettingsIcon from "../../../asset/setting-icon.svg";
@@ -25,14 +25,21 @@ import blackqueen from "../../../asset/black-queen.svg";
 import blackhorse from "../../../asset/black-horse.svg";
 import blackbishop from "../../../asset/black-bishop.svg";
 import { useTheme } from "../../context/ThemeContext";
-import { useNavigate } from "react-router-dom";
+import ContextMenu from "../../component/contextmenu/context-menu";
+import { useSelector } from "react-redux";
 
 export default function Hero() {
-  const Navigate = useNavigate();
+  const user = useSelector((state) => state.user);
   const [showFriendPopup, setFriendPopup] = useState(false);
   const [showAiPopup, setAiPopup] = useState(false);
   const [toggle, setToggle] = useState(false);
   const { toggleTheme, isDarkTheme } = useTheme();
+  const settingsMenu = [
+    { key: 1, value: "Profile", Icon: blackrook },
+    { key: 2, value: "Icon theme", Icon: blackrook },
+    { key: 3, value: "Settings", Icon: blackrook },
+    { key: 4, value: "Log out", Icon: blackrook },
+  ];
   const HeroImages = [
     whitepawn,
     whiteking,
@@ -109,6 +116,9 @@ export default function Hero() {
       setToggle(false);
     }, 100);
   };
+  useEffect(() => {
+    console.log(user.user.data.username);
+  }, [user]);
   return (
     <div
       className={`${
@@ -142,12 +152,20 @@ export default function Hero() {
                   <span>J</span>
                 </div>
                 <div className="hh-details">
-                  <p>Jindal Mistry</p>
+                  {<p>{user ? user.user.data.username : "Guest"}</p>}
                   <span>Legend</span>
                 </div>
               </div>
               <div className="hh-setting-btn">
-                <img src={SettingsIcon} alt="settings-icon" />
+                <ContextMenu
+                  content={<img src={SettingsIcon} alt="settings-icon" />}
+                  list={settingsMenu}
+                  position={"end"}
+                  showIcon={true}
+                  onSelect={(ritesh) => {
+                    console.log(ritesh);
+                  }}
+                />
               </div>
             </div>
           </div>
@@ -167,8 +185,7 @@ export default function Hero() {
               loadingType={"pulse"}
               variant={"shadowed"}
               onClick={() => {
-                // setFriendPopup(true);
-                Navigate("/login");
+                setFriendPopup(true);
               }}
             />
             <Button
