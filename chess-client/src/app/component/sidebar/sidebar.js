@@ -12,11 +12,12 @@ import logout from "../../../asset/logout-icon.png";
 import Logo from "../../../asset/main-logo.svg";
 import "./sidebar.css";
 import { useTheme } from "../../context/ThemeContext";
+import { useNavigate } from "react-router-dom";
 
 export default function Sidebar({ toggle }) {
   const { isDarkTheme, toggleTheme } = useTheme();
   const sidebarItem = [
-    { label: "Local Multiplayer", img: PlayOnline, h: 60, w: 60 },
+    { key: "LM", label: "Local Multiplayer", img: PlayOnline, h: 60, w: 60 },
     { label: "AI Challenge", img: PlayAI, h: 55, w: 55 },
     { label: "Friendly Duel", img: VsFriendSvg, h: 55, w: 55 },
     { label: "Accomplishments", img: AchievementIcon, h: 60, w: 60 },
@@ -26,7 +27,15 @@ export default function Sidebar({ toggle }) {
     { label: "Sign Out", img: logout, h: 55, w: 56 },
   ];
   const sidebarRef = useRef();
+  const navigate = useNavigate();
   const [checked, setChecked] = useState(true);
+
+  const onItemSelect = (item) => {
+    if (item.key === "LM") {
+      navigate("/local-multiplayer");
+    }
+    setChecked(!checked);
+  };
 
   useEffect(() => {
     if (toggle === true) {
@@ -76,13 +85,14 @@ export default function Sidebar({ toggle }) {
         <div id="nav-content">
           {sidebarItem.map((item, index) => {
             return (
-              <div class="nav-button">
-                <i
-                  className="fas"
-                  onClick={() => {
-                    setChecked(!checked);
-                  }}
-                >
+              <div
+                class="nav-button"
+                key={index}
+                onClick={() => {
+                  onItemSelect(item);
+                }}
+              >
+                <i className="fas">
                   <img
                     src={item.img}
                     alt="vsFriend"
