@@ -1,5 +1,5 @@
 .chessboard-container {
-  width: 95%;
+  width: min(85vh, 95%);
   aspect-ratio: 1;
 }
 .chessboard-row {
@@ -50,6 +50,9 @@
 }
 
 @media screen and (max-width: 800px) {
+  .chessboard-container {
+    width: 95%;
+  }
 }
 
 @media screen and (max-width: 450px) {
