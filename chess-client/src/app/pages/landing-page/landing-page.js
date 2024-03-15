@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./landing.css";
 import Sidebar from "../../component/sidebar/sidebar";
 import SettingsIcon from "../../../asset/setting-icon.svg";
@@ -7,11 +7,6 @@ import LightThemeIcon from "../../../asset/light-theme-icon.svg";
 import FriendPopup from "../../popup/friend-popup/friend-popup";
 import Button from "../../component/button/button";
 import AiPopup from "../../popup/ai-popup/ai-popup";
-import Image1 from "../../../asset/hero-image-1.svg";
-import Image2 from "../../../asset/hero-image-2.svg";
-import Image3 from "../../../asset/hero-image-3.svg";
-import Image4 from "../../../asset/hero-image-4.svg";
-import Image5 from "../../../asset/hero-image-5.svg";
 import whitepawn from "../../../asset/white-pawn.svg";
 import whiteking from "../../../asset/white-king.svg";
 import whiterook from "../../../asset/white-rook.svg";
@@ -28,19 +23,27 @@ import { useTheme } from "../../context/ThemeContext";
 import ContextMenu from "../../component/contextmenu/context-menu";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { User } from "../../redux/slices/userSlice";
 
 export default function Hero() {
-  const user = useSelector((state) => state.user);
+  const currUser = useSelector(User);
   const navigate = useNavigate();
   const [showFriendPopup, setFriendPopup] = useState(false);
   const [showAiPopup, setAiPopup] = useState(false);
   const [toggle, setToggle] = useState(false);
   const { toggleTheme, isDarkTheme } = useTheme();
-  const settingsMenu = [
+  const settingsMenuUser = [
     { key: 1, value: "Profile", Icon: blackrook },
     { key: 2, value: "Icon theme", Icon: blackrook },
     { key: 3, value: "Settings", Icon: blackrook },
     { key: 4, value: "Log out", Icon: blackrook },
+  ];
+  const settingsMenuGuest = [
+    { key: 5, value: "Sign In", Icon: blackrook },
+    { key: 6, value: "Sign Up", Icon: blackrook },
+    { key: 1, value: "Profile", Icon: blackrook },
+    { key: 2, value: "Icon theme", Icon: blackrook },
+    { key: 3, value: "Settings", Icon: blackrook },
   ];
   const HeroImages = [
     whitepawn,
@@ -130,6 +133,18 @@ export default function Hero() {
       setFriendPopup(true);
     }
   };
+
+  const handleSettingsOption = (item) => {
+    if (item.key === 5) {
+      navigate("/login");
+    }
+    if (item.key === 6) {
+      navigate("/register");
+    }
+  };
+
+  const onLogout = () => {};
+
   return (
     <div
       className={`${
@@ -163,18 +178,20 @@ export default function Hero() {
                   <span>J</span>
                 </div>
                 <div className="hh-details">
-                  {<p>{user ? "Ritesh chodu" : "Guest"}</p>}
+                  {<p>{currUser.IsLogged ? currUser.username : "Guest"}</p>}
                   <span>Legend</span>
                 </div>
               </div>
               <div className="hh-setting-btn">
                 <ContextMenu
                   content={<img src={SettingsIcon} alt="settings-icon" />}
-                  list={settingsMenu}
+                  list={
+                    currUser.IsLogged ? settingsMenuUser : settingsMenuGuest
+                  }
                   position={"end"}
                   showIcon={true}
-                  onSelect={(ritesh) => {
-                    console.log(ritesh);
+                  onSelect={(item) => {
+                    handleSettingsOption(item);
                   }}
                 />
               </div>

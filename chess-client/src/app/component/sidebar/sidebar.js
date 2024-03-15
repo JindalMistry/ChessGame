@@ -50,7 +50,7 @@ export default function Sidebar({ toggle, onSelect }) {
   useEffect(() => {
     if (sidebarRef && sidebarRef.current) {
       window.addEventListener("mousedown", (e) => {
-        if (!sidebarRef.current.contains(e.target)) {
+        if (!sidebarRef.current?.contains(e.target)) {
           setChecked(true);
         }
       });
@@ -92,7 +92,8 @@ export default function Sidebar({ toggle, onSelect }) {
                 class="nav-button"
                 key={index}
                 onClick={() => {
-                  onItemSelect(item);
+                  if (!checked) setChecked(!checked);
+                  else onItemSelect(item);
                 }}
               >
                 <i className="fas">

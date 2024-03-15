@@ -7,7 +7,7 @@ import { useTheme } from "../../context/ThemeContext";
 import { NavLink, useNavigate } from "react-router-dom";
 import { LoginUser } from "../../services/user-service";
 import { useDispatch } from "react-redux";
-import { addUser } from "../../redux/slices/userSlice";
+import { setUser } from "../../redux/slices/userSlice";
 import axios from "axios";
 
 export const Login = () => {
@@ -18,11 +18,12 @@ export const Login = () => {
   const Navigate = useNavigate();
   const onLoginUser = () => {
     LoginUser({ email, password })
-      .then((res) => {
-        if (res.status === 200) {
-          alert(res.data.message);
+      .then((response) => {
+        let res = response.data;
+        alert(res.data.message);
+        if (response.status === 200) {
+          dispatch(setUser({ ...res.data, token: res.token, IsLogged: true }));
           Navigate("/");
-          dispatch(addUser(res.data));
           setEmail("");
           setPassword("");
           axios.interceptors.request.use(function (config) {
@@ -30,8 +31,6 @@ export const Login = () => {
             config.headers.Authorization = `Bearer ${token}`;
             return config;
           });
-        } else {
-          alert(res.data.message);
         }
       })
       .catch((err) => console.log(err));

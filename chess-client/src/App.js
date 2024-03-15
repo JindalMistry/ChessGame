@@ -23,26 +23,11 @@ function App() {
       <div className="App">
         <BrowserRouter>
           <Routes>
-            <Route exact path="/" element={user ? <Hero /> : <Login />} />
-            <Route exact path="/login" element={<Login />} />
-            <Route exact path="/register" element={<Register />} />
-            <Route
-              exact
-              path="/local-multiplayer"
-              element={<LocalMultiplayer />}
-            />
-          </Routes>
-          <Routes>
-            {/* <Route exact path="/login" element={<Login />} /> */}
-          </Routes>
-          <Routes>
-            {/* <Route exact path="/register" element={<Register />} /> */}
-          </Routes>
-          <Routes>
-            <Route exact path="/profile" element={<Profile />} />
-          </Routes>
-          <Routes>
-            <Route exact path="/profile" element={<Profile />} />
+            <Route path="/" element={user ? <Hero /> : <Login />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/local-multiplayer" element={<LocalMultiplayer />} />
+            <Route path="/profile" element={<Profile />} />
           </Routes>
         </BrowserRouter>
       </div>

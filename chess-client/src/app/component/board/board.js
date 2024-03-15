@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toastAlert } from "../toastalert/toast-alert";
+import Movesound from "../../../asset/sound-effect/move";
+import CaptureSound from "../../../asset/sound-effect/capture";
 import "./board.css";
 
 export const Board = ({
@@ -35,6 +37,13 @@ export const Board = ({
         const move = await onMove(selected, square);
         console.log("Move", move);
         if (move) {
+          if (move.success) {
+            if (move.captured) {
+              playCaptured();
+            } else {
+              playMove();
+            }
+          }
           setSelected(null);
           clearPossibleMoves();
         }
@@ -45,6 +54,16 @@ export const Board = ({
         onSelect(square);
       }
     }
+  };
+
+  const playMove = () => {
+    const sound = new Audio(Movesound);
+    sound.play();
+  };
+
+  const playCaptured = () => {
+    const sound = new Audio(CaptureSound);
+    sound.play();
   };
 
   return (

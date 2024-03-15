@@ -56,14 +56,14 @@ export default function LocalMultiplayer() {
         setChessBoard(createBoard());
         let status = getGameStatus();
         toastAlert(status.msg, status.type);
-        return true;
+        return { success: true, IsCaptured: moved.captured };
       } else {
         toastAlert("There was error while making the move.!", "ERROR");
-        return false;
+        return { success: true, IsCaptured: false };
       }
     } catch (error) {
       console.log(error);
-      return false;
+      return { success: true, IsCaptured: false };
     }
   };
   const clearPossibleMoves = () => {
