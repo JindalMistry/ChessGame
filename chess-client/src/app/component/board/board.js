@@ -1,17 +1,10 @@
 import { useEffect, useState } from "react";
 import { toastAlert } from "../toastalert/toast-alert";
-import Movesound from "../../../asset/sound-effect/move";
-import CaptureSound from "../../../asset/sound-effect/capture";
+import Movesound from "../../../asset/sound-effect/move-self.mp3";
+import CaptureSound from "../../../asset/sound-effect/capture.mp3";
 import "./board.css";
 
-export const Board = ({
-  board,
-  onSelect,
-  turn,
-  onMove,
-  possibleMoves,
-  clearPossibleMoves,
-}) => {
+export const Board = ({ board, onSelect, turn, onMove, possibleMoves, clearPossibleMoves }) => {
   const [selected, setSelected] = useState(null);
 
   const IsMoveValid = (pos) => {
@@ -38,7 +31,7 @@ export const Board = ({
         console.log("Move", move);
         if (move) {
           if (move.success) {
-            if (move.captured) {
+            if (move.IsCaptured) {
               playCaptured();
             } else {
               playMove();
@@ -57,8 +50,8 @@ export const Board = ({
   };
 
   const playMove = () => {
-    const sound = new Audio(Movesound);
-    sound.play();
+    const audioElement = new Audio(Movesound);
+    audioElement.play(); // Play the audio
   };
 
   const playCaptured = () => {
@@ -74,9 +67,7 @@ export const Board = ({
             {row.map((square, colIndex) => {
               return (
                 <div
-                  className={`chessboard-square ${
-                    (rowIndex + colIndex) % 2 === 0 ? "light" : "dark"
-                  }`}
+                  className={`chessboard-square ${(rowIndex + colIndex) % 2 === 0 ? "light" : "dark"}`}
                   key={colIndex}
                   onClick={() => {
                     onPiecePress(square);
@@ -85,9 +76,7 @@ export const Board = ({
                   {square && !square.type && possibleMoves[square.square] && (
                     <div className="board-circle-center"></div>
                   )}
-                  {square && square.type && possibleMoves[square.square] && (
-                    <div className="board-circle-corner"></div>
-                  )}
+                  {square && square.type && possibleMoves[square.square] && <div className="board-circle-corner"></div>}
                   {square.type && <Piece square={square} />}
                 </div>
               );
@@ -100,7 +89,7 @@ export const Board = ({
 };
 
 export const getImageSource = (color, type) => {
-  return `asset/Theme2/${color}-${type}.png`;
+  return `asset/Theme5/${color}-${type}.png`;
 };
 
 export const Piece = ({ square, possibleMoves }) => {
@@ -111,11 +100,7 @@ export const Piece = ({ square, possibleMoves }) => {
 
   return (
     <img
-      style={
-        pieceType === "p"
-          ? { width: "60%", height: "60%" }
-          : { width: "90%", height: "90%" }
-      }
+      style={pieceType === "p" ? { width: "90%", height: "90%" } : { width: "90%", height: "90%" }}
       src={require("../../../" + getImageSource(pieceColor, pieceType))}
       alt={PiecesPosition}
     />
