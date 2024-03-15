@@ -13,7 +13,6 @@ export const Board = ({
   const [selected, setSelected] = useState(null);
 
   const IsMoveValid = (pos) => {
-    return true;
     if (possibleMoves[pos]) return true;
     return false;
   };
@@ -82,7 +81,7 @@ export const Board = ({
 };
 
 export const getImageSource = (color, type) => {
-  return `asset/Theme4/${color}-${type}.png`;
+  return `asset/Theme2/${color}-${type}.png`;
 };
 
 export const Piece = ({ square, possibleMoves }) => {

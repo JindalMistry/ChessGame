@@ -2,7 +2,6 @@ import { createPortal } from "react-dom";
 import React, { useEffect, useRef, useState } from "react";
 import VsFriendSvg from "../../../asset/vs-friend.svg";
 import AchievementIcon from "../../../asset/achivement-icon.svg";
-import chessIcon from "../../../asset/chess-piece 1.svg";
 import PlayOnline from "../../../asset/tmep.svg";
 import PlayAI from "../../../asset/vs-ai.svg";
 import History from "../../../asset/history-icon.svg";
@@ -14,26 +13,30 @@ import "./sidebar.css";
 import { useTheme } from "../../context/ThemeContext";
 import { useNavigate } from "react-router-dom";
 
-export default function Sidebar({ toggle }) {
-  const { isDarkTheme, toggleTheme } = useTheme();
+export default function Sidebar({ toggle, onSelect }) {
+  const { isDarkTheme } = useTheme();
   const sidebarItem = [
     { key: "LM", label: "Local Multiplayer", img: PlayOnline, h: 60, w: 60 },
-    { label: "AI Challenge", img: PlayAI, h: 55, w: 55 },
-    { label: "Friendly Duel", img: VsFriendSvg, h: 55, w: 55 },
-    { label: "Accomplishments", img: AchievementIcon, h: 60, w: 60 },
-    { label: "Game History", img: History, h: 60, w: 60 },
-    { label: "Skill Improvement", img: GetBetter, h: 60, w: 60 },
-    { label: "Support Center", img: HelpSupport, h: 60, w: 60 },
-    { label: "Sign Out", img: logout, h: 55, w: 56 },
+    { key: "AC", label: "AI Challenge", img: PlayAI, h: 55, w: 55 },
+    { key: "FD", label: "Friendly Duel", img: VsFriendSvg, h: 55, w: 55 },
+    {
+      key: "ACMP",
+      label: "Accomplishments",
+      img: AchievementIcon,
+      h: 60,
+      w: 60,
+    },
+    { key: "GH", label: "Game History", img: History, h: 60, w: 60 },
+    { key: "SI", label: "Skill Improvement", img: GetBetter, h: 60, w: 60 },
+    { key: "SC", label: "Support Center", img: HelpSupport, h: 60, w: 60 },
+    { key: "SO", label: "Sign Out", img: logout, h: 55, w: 56 },
   ];
   const sidebarRef = useRef();
   const navigate = useNavigate();
   const [checked, setChecked] = useState(true);
 
   const onItemSelect = (item) => {
-    if (item.key === "LM") {
-      navigate("/local-multiplayer");
-    }
+    onSelect(item);
     setChecked(!checked);
   };
 

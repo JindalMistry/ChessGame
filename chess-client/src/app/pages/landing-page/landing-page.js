@@ -27,9 +27,11 @@ import blackbishop from "../../../asset/black-bishop.svg";
 import { useTheme } from "../../context/ThemeContext";
 import ContextMenu from "../../component/contextmenu/context-menu";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 export default function Hero() {
   const user = useSelector((state) => state.user);
+  const navigate = useNavigate();
   const [showFriendPopup, setFriendPopup] = useState(false);
   const [showAiPopup, setAiPopup] = useState(false);
   const [toggle, setToggle] = useState(false);
@@ -116,16 +118,25 @@ export default function Hero() {
       setToggle(false);
     }, 100);
   };
-  useEffect(() => {
-    console.log(user.user.data.username);
-  }, [user]);
+
+  const handleSidebarOption = (item) => {
+    if (item.key === "LM") {
+      navigate("/local-multiplayer");
+    }
+    if (item.key === "AC") {
+      setAiPopup(true);
+    }
+    if (item.key === "FD") {
+      setFriendPopup(true);
+    }
+  };
   return (
     <div
       className={`${
         isDarkTheme ? "black-theme-background" : "white-theme-background"
       } hero-wrapper`}
     >
-      <Sidebar toggle={toggle} />
+      <Sidebar toggle={toggle} onSelect={handleSidebarOption} />
       <div className="hero">
         <div className="hh">
           <span className="hh-left">
@@ -152,7 +163,7 @@ export default function Hero() {
                   <span>J</span>
                 </div>
                 <div className="hh-details">
-                  {<p>{user ? user.user.data.username : "Guest"}</p>}
+                  {<p>{user ? "Ritesh chodu" : "Guest"}</p>}
                   <span>Legend</span>
                 </div>
               </div>
