@@ -14,6 +14,7 @@ export default function LocalMultiplayer() {
   const [removed, setRemoved] = useState(defaultRemoved);
   const [chessBoard, setChessBoard] = useState([]);
   const [possibleMoves, setPossibleMoves] = useState([]);
+  const [isCompleted, setIsCompleted] = useState(false);
   const createBoard = () => {
     const board = [];
     for (let row = 8; row >= 1; row--) {
@@ -39,7 +40,6 @@ export default function LocalMultiplayer() {
       if (moved) {
         setGame(game);
         if (moved.captured) {
-          console.log("MOved : ", moved);
           const capturedPiece = {
             color: to.color,
             type: moved.captured,
@@ -55,7 +55,9 @@ export default function LocalMultiplayer() {
         }
         setChessBoard(createBoard());
         let status = getGameStatus();
-        toastAlert(status.msg, status.type);
+        if (status.type !== "SUCCESS") {
+          toastAlert(status.msg, status.type);
+        }
         return { success: true, IsCaptured: moved.captured };
       } else {
         toastAlert("There was error while making the move.!", "ERROR");
@@ -69,10 +71,9 @@ export default function LocalMultiplayer() {
   const clearPossibleMoves = () => {
     setPossibleMoves({});
   };
+
   const onSelect = (square) => {
-    console.log("Square : ", square);
     let moves = game.moves({ square: square.square, verbose: true });
-    console.log("Possbile moves : ", moves);
     let obj = {};
     moves.forEach((i) => {
       obj[i.to] = "Move";
@@ -87,12 +88,14 @@ export default function LocalMultiplayer() {
     };
     if (game.isCheckmate()) {
       obj.msg = `Game over ${
-        game.turn() === "b" ? "white" : "black"
+        game.turn() === "b" ? "black" : "white"
       } is in checkmate!`;
       obj.type = "ERROR";
+      setIsCompleted(true);
     } else if (game.isDraw()) {
       obj.msg = "Game over, it's a draw.";
       obj.type = "WARN";
+      setIsCompleted(true);
     } else {
       obj.msg = `Move has been made by ${
         game.turn() === "b" ? "white" : "black"
@@ -145,6 +148,7 @@ export default function LocalMultiplayer() {
             clearPossibleMoves={clearPossibleMoves}
             onMove={onMove}
             onSelect={onSelect}
+            disabled={isCompleted}
           />
         </div>
         <div className="playerinfo">

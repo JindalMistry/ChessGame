@@ -1,10 +1,18 @@
-import { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { toastAlert } from "../toastalert/toast-alert";
-import Movesound from "../../../asset/sound-effect/move-self.mp3";
-import CaptureSound from "../../../asset/sound-effect/capture.mp3";
-import "./board.css";
 
-export const Board = ({ board, onSelect, turn, onMove, possibleMoves, clearPossibleMoves }) => {
+import "./board.css";
+import { playCapture, playMove } from "../../helpers/sounds";
+
+export const Board = ({
+  board,
+  onSelect,
+  turn,
+  onMove,
+  possibleMoves,
+  clearPossibleMoves,
+  disabled,
+}) => {
   const [selected, setSelected] = useState(null);
 
   const IsMoveValid = (pos) => {
@@ -27,16 +35,14 @@ export const Board = ({ board, onSelect, turn, onMove, possibleMoves, clearPossi
           toastAlert("Oops, that's not a legal move.");
           return;
         }
+        if (square.type) {
+          playCapture();
+        } else {
+          playMove();
+        }
         const move = await onMove(selected, square);
         console.log("Move", move);
         if (move) {
-          if (move.success) {
-            if (move.IsCaptured) {
-              playCaptured();
-            } else {
-              playMove();
-            }
-          }
           setSelected(null);
           clearPossibleMoves();
         }
@@ -49,16 +55,6 @@ export const Board = ({ board, onSelect, turn, onMove, possibleMoves, clearPossi
     }
   };
 
-  const playMove = () => {
-    const audioElement = new Audio(Movesound);
-    audioElement.play(); // Play the audio
-  };
-
-  const playCaptured = () => {
-    const sound = new Audio(CaptureSound);
-    sound.play();
-  };
-
   return (
     <div className="chessboard-container">
       {board.map((row, rowIndex) => {
@@ -67,16 +63,20 @@ export const Board = ({ board, onSelect, turn, onMove, possibleMoves, clearPossi
             {row.map((square, colIndex) => {
               return (
                 <div
-                  className={`chessboard-square ${(rowIndex + colIndex) % 2 === 0 ? "light" : "dark"}`}
+                  className={`chessboard-square ${
+                    (rowIndex + colIndex) % 2 === 0 ? "light" : "dark"
+                  }`}
                   key={colIndex}
                   onClick={() => {
-                    onPiecePress(square);
+                    if (!disabled) onPiecePress(square);
                   }}
                 >
                   {square && !square.type && possibleMoves[square.square] && (
                     <div className="board-circle-center"></div>
                   )}
-                  {square && square.type && possibleMoves[square.square] && <div className="board-circle-corner"></div>}
+                  {square && square.type && possibleMoves[square.square] && (
+                    <div className="board-circle-corner"></div>
+                  )}
                   {square.type && <Piece square={square} />}
                 </div>
               );
@@ -100,7 +100,11 @@ export const Piece = ({ square, possibleMoves }) => {
 
   return (
     <img
-      style={pieceType === "p" ? { width: "90%", height: "90%" } : { width: "90%", height: "90%" }}
+      style={
+        pieceType === "p"
+          ? { width: "90%", height: "90%" }
+          : { width: "90%", height: "90%" }
+      }
       src={require("../../../" + getImageSource(pieceColor, pieceType))}
       alt={PiecesPosition}
     />

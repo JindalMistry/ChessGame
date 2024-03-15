@@ -42,11 +42,11 @@
   transform: translate(-50%, -50%);
 }
 .chessboard-square.light {
-  background-color: #676767;
+  background-color: #556b2f;
 }
 
 .chessboard-square.dark {
-  background-color: #d3d3d3;
+  background-color: #fffacd;
 }
 
 @media screen and (max-width: 800px) {
